@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<NotepadPlus modelDate="20260614" modelFileLastModifiedDate="20260913">
+<NotepadPlus modelDate="20260714" modelFileLastModifiedDate="20261009">
     <!-- The keywords of the supported languages, don't touch them! -->
     <!-- For languages like C/C++ substyle1..8 entries, you may enter your own keywords in those entries,
         to have them show up in the "Default keywords" list shown in the Style Configurator -->
@@ -616,7 +616,7 @@
             <Keywords name="type1">include bininclude requires orrequires if then else elseif endif error message export externally options</Keywords>
             <Keywords name="type2">short detail end exception withdomain</Keywords>
         </Language>
-        <Language name="xml" ext="xml xaml xsl xslt xsd xul kml svg mxml xsml wsdl xlf xliff xbl sxbl sitemap gml gpx plist slnx targets vcproj vcxproj csproj csxproj vbproj dbproj dproj wxs wixproj" commentLine="" commentStart="&lt;!--" commentEnd="-->">
+        <Language name="xml" ext="xml xaml xsl xslt xsd xul kml svg mxml xsml wsdl xlf xliff xbl sxbl sitemap gml gpx plist slnx targets vcproj vcxproj csproj csxproj vbproj dbproj dproj wxs wixproj ilproj" commentLine="" commentStart="&lt;!--" commentEnd="-->">
             <Keywords name="instre1">ATTLIST DOCTYPE ELEMENT ENTITY NOTATION</Keywords>
             <Keywords name="substyle1" />
             <Keywords name="substyle2" />
