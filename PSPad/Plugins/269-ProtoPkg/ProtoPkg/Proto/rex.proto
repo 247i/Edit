@@ -1,0 +1,372 @@
+<!---
+	Filename		  : REX.proto - Prototypes for Rexx programs
+
+	Created			  : 07 April 2010 (17:00:56)
+	Created by		: Russ Williams
+
+	Comments	  	: Keywords must be preceded by ":".
+	                Entries are (mostly) sorted only to make them easy to correct.
+                  Proto does not depend on the sort.
+                  Keywords are capitalized for user convenience. Proto will capitalize
+                  whatever you give before searching for a match.
+                  Hyphenated keywords have had their hyphens removed because "ecselwordleft"
+                  treats hyphens as word breaks.
+                  Some definitions are still in progress.
+--->
+: = Conditions | Functions | SpecialVariables | Statements
+:ABBREV Abbrev(long, short [,minlength]) /* (Built­in Function) =1 if "short" string is the initial part of "long" string */
+:ABS Abs(number) /* (Built­in Function) */
+:ADDRESS Address([option]) /* (Built­in Function) current default environment to which commands are sent; option can be one of "N", "I", "O", "E" (default "N") */
+:ADDRESSINSTR Address {[ environment  [ command ] [ redirection ] ]} | [ [ Value ] expr [ redirection ] ] ;
+:ARG Arg([argno [,option]]) /* (Built­in Function) option "O" returns 1 for "omitted"; "E" returns 1 for "specified" */
+:ASSIGNMENT /*** in process ***/
+:B2C B2C(binstring) /* (Built­in Function) (AREXX) Binary to Character */
+:B2X B2X(binstring) /* (Built­in Function) Binary to hex */
+:BEEP Beep(frequency [,duration]) /* (Built­in Function) OS/2 */
+:BITAND Bitand(string1 [,[string2] [,padchar]]) /* (Built­in Function) */
+:BITCHG Bitchg(string, bit) /* (Built­in Function) (AREXX) */
+:BITCLR Bitclr(string, bit) /* (Built­in Function) (AREXX) */
+:BITCOMP Bitcomp(string1, string2, bit [,pad]) /* (Built­in Function) (AREXX) */
+:BITOR Bitor(string1 [, [string2] [,padchar]]) /* (Built­in Function) */
+:BITSET Bitset(string, bit) /* (Built­in Function) (AREXX) */
+:BITTST Bittst(string, bit) /* (Built­in Function) (AREXX) */
+:BITXOR Bitxor(string1[, [string2] [,padchar]]) /* (Built­in Function) */
+:BUFTYPE Buftype() /* (Built­in Function) (CMS) */
+:C2B C2B(string) /* (Built­in Function) (AREXX) */
+:C2D C2D(string [,length]) /* (Built­in Function) Character to decimal */
+:C2X C2X(string) /* (Built­in Function) Character to hex */
+:CD CD(directory) /* (Built­in Function) (REGINA) */
+:CENTER Center(string, length [, padchar ] ) /* (Built­in Function) (or CENTRE) */
+:CHANGESTR Changestr(needle, haystack, newneedle) /* (Built­in Function) */
+:CHARIN Charin([streamid] [,[start] [,length]]) /* (Built­in Function) */
+:CHAROUT Charout([streamid] [,[string] [,start]]) /* (Built­in Function) */
+:CHARS Charout([streamid] [,[string] [,start]]) /* (Built­in Function) */
+:CHDIR Chdir(directory) /* (Built­in Function) (REGINA) */
+:CLOSE Close(file) /* (Built­in Function) (AREXX) */
+:COMMANDS = Assignment | Instructions
+:COMPARE Compare(string1, string2 [,padchar]) /* (Built­in Function) 0 if equal */
+:COMPRESS Compress(string [,list]) /* (Built­in Function) (AREXX) */
+:CONDITION Condition([option]) /* (Built­in Function) Returns info on current trapped condition; option = "C", "D", "E", "I" or "S" */
+:CONDITIONS = Error | Failure | Halt | Lostdigits | Notready | Novalue | Syntax
+:COPIES Copies(string, copies) /* (Built­in Function) */
+:COUNTSTR Countstr(needle, haystack) /* (Built­in Function) */
+:CRYPT Crypt(string, salt) /* (Built­in Function) (REGINA) */
+:D2C D2C(integer [,length]) /* (Built­in Function) */
+:D2X D2X(integer [,length]) /* (Built­in Function) */
+:DATATYPE Datatype(string [,option]) /* (Built­in Function) Option is one of "A", "B", "L". "M", "N", "S", "U", "W", "X" */
+:DATE Date([option_out [,date [,option_in]]]) /* (Built­in Function) Ooption is one of "B", "C", "D", "E", "I", "M", "N", "O", "S" "U", "W", "T" "/
+:DELSTR Delstr(string, start [,length]) /* (Built­in Function) */
+:DELWORD Delword(string,start[,length]) /* (Built­in Function) */
+:DESBUF Desbuf() /* (Built­in Function) (CMS) */
+:DIGITS Digits() /* (Built­in Function) */
+:DIRECTORY Directory( [new_directory]) /* (Built­in Function) (OS/2) */
+:DROPBUF Dropbuf( [number]) /* (Built­in Function) (CMS) */
+:EOF EOF( file) /* (Built­in Function) (AREXX) */
+:ERRORTEXT Errortext( errno [, lang]) /* (Built­in Function) Option is "N" or "S" */
+:EXISTS Exists( filename) /* (Built­in Function) (AREXX) */
+:EXPORT Export( address, [string], [length] [,pad]) /* (Built­in Function) (AREXX) */
+:FILESPEC Filespec( option, filespec) /* (Built­in Function) (OS/2) Possible options are "D", "N", or "P" */
+:FIND Find( string, phrase) /* (Built­in Function) (CMS) */
+:FORK Fork() /* ((Built­in Function) REGINA) /*
+:FORM Form() /* (Built­in Function) Returns "SCIENTIFIC" (the default) or "ENGINEERING" */
+:FORMAT Format( number [,[before] [,[after] [,[expp] [,[expt]]]]]) /* (Built­in Function) */
+:FREESPACE Freespace( address, length) /* (Built­in Function) (AREXX) /*
+:FUNCTIONS = /*** in process ***/
+:FUZZ Fuzz() /* (Built­in Function) */
+:GETENV Getenv( environmentvar) /* (Built­in Function) (REGINA) obsolete, use: VALUE( environmentvar, ,'SYSTEM' ) */
+:GETPID Getpid() /* (Built­in Function) (REGINA) */
+:GETSPACE Getspace( length) /* (Built­in Function) (AREXX) */
+:GETTID Gettid() /* (Built­in Function) (REGINA) Get Thread ID */
+:HASH Hash(string) /* (Built­in Function) (AREXX) */
+:IMPORT Import( address [,length]) /* (Built­in Function) (AREXX) */
+:INDEX Index(haystack, needle [,start]) /* (Built­in Function) (CMS) */
+:INSERT Insert(string1, string2 [,position [,length [,padchar]]]) /* (Built­in Function) */
+:INSTRUCTIONS = AddressInstr | ArgInstr | CallInstr | DoEndInstr | DropInstr | ExitInstr | IfThenElseInstr | InterpretInstr | IterateInstr | LeaveInstr | NopInstr | NumericInstr | OptionsInstr | ParseInstr | ProcedureInstr | PullInstr | PushInstr | QueueInstr | ReturnInstr | SayInstr | SelectWhenOrwiseInstr | SignalInstr | TraceInstr | UpperInstr 
+:JUSTIFY Justify(string, length [,pad]) /* (Built­in Function) (CMS) */
+:LASTPOS Lastpos(needle, haystack [,start]) /* (Built­in Function) */
+:LEFT Left(string, length [,padchar]) /* (Built­in Function) */
+:LENGTH Length(string) /* (Built­in Function) */
+:LINEIN Linein([streamid][,[line][,count]]) /* (Built­in Function) */
+:LINEOUT Lineout([streamid] [,[string] [,line]]) /* (Built­in Function) */
+:LINES Lines([streamid] [,option]) /* (Built­in Function) Option may be "C" or "N" (default) */
+:LOWER Lower(string) /* (Built­in Function) (REGINA) */
+:MAKEBUF Makebuf() /* (Built­in Function) (CMS) */
+:MAX Max(number1 [,number2] ...) /* (Built­in Function) */
+:MIN Min(number [,number] ...) /* (Built­in Function) */
+:OPEN Open(file, filename, ['Append'|'Read'|'Write']) /* (Built­in Function) (AREXX) */
+:OVERLAY Overlay(string1, string2 [,[start] [,[length] [,padchar]]]) /* (Built­in Function) */
+:POOLID Poolid() /* (Built­in Function) (REGINA) */
+:POPEN Popen(command [,stem.]) /* (Built­in Function) (REGINA) - deprecated. ADDRESS WITH can do the same thing */
+:POS Pos(needle, haystack [,start]) /* (Built­in Function) */
+:PUTENV PutEnv(environmentvar=[value]) /* (Built-in Function) (REGINA) */
+:QUALIFY Qualify([streamid]) /* (Built-in Function) */
+:QUEUED Queued() /* (Built-in Function) */
+:RANDOM Random(max) | Random([min] [,[max] [,seed]]) /* (Built-in Function) */
+:RANDU Randu([seed]) /* (Built-in Function) (AREXX) */
+:READCH Readch(file, length) /* (Built-in Function) (AREXX) */
+:READLN Readln(file) /* (Built-in Function) (AREXX) */
+:REDIRECTION = WITH {input_redir [output_redir] [error_redir] | input_redir [error_redir] [output_redir] | output_redir [input_redir] [error_redir] | output_redir [error_redir] [input_redir] | error_redir [input_redir] [output_redir] | error_redir [output_redir] [input_redir]}
+:REGSTEMDOOVER RegStemDoOver(stem, variable[, outstem]) ® 0 or 1: enumerates the indexes of a stem; (RegUtil)
+:REGSTEMREAD RegStemRead(filename, stemname) ® 0 or 1: read file into stem; (RegUtil)
+:REGSTEMSEARCH RegStemSearch(needle, haystack[, start] [, flags]) ® 0 or index: search a stem for a value. (RegUtil)
+:REGSTEMWRITE RegStemWrite(filename, stemname) ® 0 or 1: write file from stem; (RegUtil)
+:REVERSE Reverse(string) /* (Built-in Function) */
+:RIGHT Right(string, length[,padchar]) /* (Built-in Function) */
+:RXFUNCADD Rxfuncadd(externalname, library, internalname) /* (Built-in Function) (SAA) */
+:RXFUNCDROP Rxfuncdrop(externalname) /* (Built-in Function) (SAA) */
+:RXFUNCERRMSG1 Rxfuncerrmsg() /* (Built-in Function) (REGINA) */
+:RXFUNCQUERY Rxfuncquery(externalname) /* (Built-in Function) (SAA) */
+:RXMESSAGEBOX RxMessageBox(text, [title], [button], [icon]) ® button id: displays a message box and returns the button selected (RegUtil)
+:RXQUEUE Rxqueue(command [,queue|timeout]) /* (Built-in Function) (OS/2) "Command" is one of "C", "D", "G", "S" or "T" */
+:SEEK Seek(file, offset, ['Begin'|'Current'|'End') /* (Built-in Function) (AREXX) */
+:SHORTCUT ShortCut /F:filename /A:C|E|Q [/T:target] [/P:parameters] [/W:workingdir] [/R:runstyle] [/I:icon,index] [/H:hotkey] [/D:description]
+:SHOW Show(option, [name], [pad]) /* (Built-in Function) (AREXX) */
+:SIGN Sign(number) /* (Built-in Function) */
+:SLEEP Sleep(seconds) /* (Built-in Function) (CMS) */
+:SOURCELINE Sourceline([lineno]) /* (Built-in Function) */
+:SPACE Space(string[, [length] [,padchar]]) /* (Built-in Function) */
+:SPECIALVARIABLES = RC | Result | RS | Sigl | .EndOfLine | .Line | .MN | .RC | .Result | .RS 
+:STATE State(streamid) /* (Built-in Function) (CMS) */
+:STATEMENTS = Assignments | Commands | Instructions /*** in proess ***/
+:STORAGE Storage([address], [string], [length], [pad]) /* (Built-in Function) (AREXX) */
+:STREAM Stream(streamid[,option[,command]]) /* (Built-in Function) Option is one of "C", "D" or "S"; 'Operation" is one of OPEN READ, OPEN WRITE, OPEN WRITE APPEND, OPEN BOTH, CREATE, CLOSE, FLUSH, STATUS, FSTAT, RESET, READABLE, WRITABLE, EXECUTABLE, QUERY, OPEN, SEEK */
+:STRIP Strip(string [,[option] [,char]]) /* (Built-in Function) Option is "L", "T", or "B" */
+:SUBSTR Substr(string, start [,[length] [,padchar]]) /* (Built-in Function) */
+:SUBWORD Subword(string, start [,length]) /* (Built-in Function) */
+:SYMBOL Symbol(name) /* (Built-in Function) */
+:SYSADDREXXMACRO SysAddRexxMacro(name, file, [order]) ® 0 or failure : adds a macro; (RegUtil)
+:SYSBOOTDRIVE SysBootDrive() ® value: returns the drive from which NT was booted, or the name of the Unix kernel file (RegUtil)
+:SYSCLEARREXXMACROSPACE SysClearRexxMacroSpace() ® 0 or failure : clears all macros; (RegUtil)
+:SYSCLOSEEVENTSEM SysCloseEventSem(semid) ® 0 or failure: close an event semaphore; (RegUtil)
+:SYSCLOSEMUTEXSEM SysCloseMutexSem(semid) ® 0 or failure: close an mutex semaphore; (RegUtil)
+:SYSCLS SysCls() : clears the screen; (RegUtil)
+:SYSCOPYOBJECT SysCopyObject(from,to) ® 0 or failure: copies a file (RegUtil)
+:SYSCREATEEVENTSEM SysCreateEventSem([name],[manualreset]) ® handle: create an event semaphore; (RegUtil)
+:SYSCREATEMUTEXSEM SysCreateMutexSem([name]) ® handle: create a mutex semaphore; (RegUtil)
+:SYSCREATESHADOW SysCreateShadow(from,to) ® 0 or failure: creates a link to a file (RegUtil)
+:SYSCURPOS SysCurPos([row],[column]) ® row column: moves the cursor, and returns its current position on the screen; (RegUtil)
+:SYSCURSTATE SysCurState(state): makes the cursor visible or invisible; (RegUtil)
+:SYSDRIVEINFO SysDriveInfo(drive) ® returns the free space on the drive, or the partition containing the argument (RegUtil)
+:SYSDRIVEMAP SysDriveMap([drive],[opt]) ® list: lists accessible drives (RegUtil)
+:SYSDROPFUNCS SysDropFuncs() -> 0 (RegUtil)
+:SYSDROPREXXMACRO SysDropRexxMacro(name) ® 0 or failure : drops a macro; (RegUtil)
+:SYSDUMPVARIABLES SysDumpVariables([filename]) ® 0 or -1: dump the names and values of all variables to a file; (RegUtil)
+:SYSFILEDELETE SysFileDelete(file) ® 0 or failure: deletes a file (RegUtil)
+:SYSFILESEARCH SysFileSearch(target,file,stem, [options]) ® 0 or failure: searches a file for some text (RegUtil)
+:SYSFILESYSTEMTYPE SysFileSystemType(file) ® string: returns the name of the file-system in use for file (RegUtil)
+:SYSFILETREE SysFileTree( filespec, stem, [options], [tattrib], [nattrib]) ®0 or failure: search for files matching filespec (RegUtil)
+:SYSFROMUNICODE SysFromUnicode(string, [codepage], [mappingflags], [defaultchar], outstem) ® 0 or failure; (RegUtil)
+:SYSGETERRORTEXT SysGetErrorText(errno) ® text: returns the standard system error text for an error number (RegUtil)
+:SYSGETFILEDATETIME SysGetFileDateTime(name[, which]) ® timestamp: returns a timestamp for a file; (RegUtil)
+:SYSGETKEY SysGetKey([echo],[timeout]): retrieves a keystroke; (RegUtil)
+:SYSINI SysIni([inifile],app,key,val,stem) ® value: retrieve values from .ini files (RegUtil)
+:SYSLINVER SysLinVer() ® value: returns the operating system version (RegUtil)
+:SYSLOADFUNCS SysLoadFuncs() -> 0 (RegUtil)
+:SYSLOADREXXMACROSPACE SysLoadRexxMacroSpace(file) ® 0 or failure : initialises a macro-space from a file; (RegUtil)
+:SYSMKDIR SysMkDir(directory) ® 0 or failure: creates a new directory (RegUtil)
+:SYSMOVEOBJECT SysMoveObject(from,to) ® 0 or failure: renames or moves a file (RegUtil)
+:SYSOPENEVENTSEM SysOpenEventSem(name) ® handle: open an event semaphore; (RegUtil)
+:SYSOPENMUTEXSEM SysOpenMutexSem(name) ® handle: open a mutex semaphore; (RegUtil)
+:SYSOS2VER SysOS2Ver() ® value: returns the operating system version (RegUtil)
+:SYSPOSTEVENTSEM SysPostEventSem(semid) ® 0 or failure: set the semaphore status to ‘on’; (RegUtil)
+:SYSPULSEEVENTSEM SysPulseEventSem(semid) ® 0 or failure: set the semaphore status to ‘on’ then ‘off’ again; (RegUtil)
+:SYSQUERYPROCESS SysQueryProcess(thing) ® 0 or success: get the process ID, or some canned data (RegUtil)
+:SYSQUERYREXXMACRO SysQueryRexxMacro(name) ® ‘B’, ‘A’ or ‘’ : determines whether a macro is defined; (RegUtil)
+:SYSRELEASEMUTEXSEM SysReleaseMutexSem(semid) ® 0 or failure: unlock a mutex semaphore; (RegUtil)
+:SYSREORDERREXXMACRO SysReorderRexxMacro(name,order) ® 0 or failure : moves the search order of a macro; (RegUtil)
+:SYSREQUESTMUTEXSEM SysRequestMutexSem(semid, [timeout]) ® 0 or failure: lock a mutex semaphore; (RegUtil)
+:SYSRESETEVENTSEM SysResetEventSem(semid) ® 0 or failure: set the semaphore status to ‘off’; (RegUtil)
+:SYSRMDIR SysRmDir(directory) ® 0 or failure: removes a directory (RegUtil)
+:SYSSAVEREXXMACROSPACE SysSaveRexxMacroSpace(file) ® 0 or failure : saves a macro space to a file (RegUtil)
+:SYSSEARCHPATH SysSearchPath(var,file) ® full filename: searches a list of directories from an environment variable for a file (RegUtil)
+:SYSSETFILEDATETIME SysSetFileDateTime(name[, date[, time]]) ® 0 or failure: sets the modification timestamp for a file (RegUtil)
+:SYSSETPRIORITY SysSetPriority(class,delta) ® 0 or success: set the priority of the current process (RegUtil)
+:SYSSLEEP SysSleep(time) ® 0 or success: block for the specified period of time (RegUtil)
+:SYSSTEMCOPY SysStemCopy(from, to[, fromindex, toindex, count, insertoverlay]) ® 0 or -1: copy a stem to another stem; (RegUtil)
+:SYSSTEMDELETE SysStemDelete(stem, index[, count]) ® 0 or -1: delete elements from a stem; (RegUtil)
+:SYSSTEMINSERT SysStemInsert(stem, index, value) ® 0 or -1: insert a value into a stem; (RegUtil)
+:SYSSTEMSORT SysStemSort(stemname[, order] [,sensitivity] [,startpos,endpos] [,firstcol,lastcol]) ® 0 or -1: sort the elements of a stem; (RegUtil)
+:SYSSWITCHSESSION SysSwitchSession(name) ® 0 or success: brings a named application to the foreground (RegUtil)
+:SYSSYSTEMDIRECTORY SysSystemDirectory() ® value: returns the name of the system directory (RegUtil)
+:SYSTEMPFILENAME SysTempFileName(template, [filter]) ® name: returns a temporary name based on a template (RegUtil)
+:SYSTEXTSCREENREAD SysTextScreenRead(row,column,len) ® text: reads the screen; (RegUtil)
+:SYSTEXTSCREENSIZE SysTextScreenSize() ® rows columns: gets the size of the screen; (RegUtil)
+:SYSTOUNICODE SysToUnicode(string, [codepage], [mappingflags], outstem) ® 0 or failure; (RegUtil)
+:SYSUTILVERSION SysUtilVersion() ® value: returns the regutil version (RegUtil)
+:SYSUTILVERSION SysUtilVersion() ® value: returns the version of this library (RegUtil)
+:SYSVERSION SysVersion() ® value: returns the operating system version (RegUtil)
+:SYSVERSION SysVersion() ® value: returns the operating system version (RegUtil)
+:SYSVOLUMELABEL SysVolumeLabel(drive) ® returns the label on a specified drive (RegUtil)
+:SYSWAITEVENTSEM SysWaitEventSem(semid, [timeout])®0 or failure: wait for an event semaphore to be turned ‘on (RegUtil)
+:SYSWAITNAMEDPIPE SysWaitNamedPipe(name,[timeout]) ® 0 or failure: waits on a named pipe (RegUtil)
+:SYSWINDECRYPTFILE SysWinDecryptFile(filename) ® 82 (not implemented) (RegUtil)
+:SYSWINENCRYPTFILE SysWinEncryptFile(filename) ® 82 (not implemented) (RegUtil)
+:SYSWINVER SysWinVer() ® value: returns the operating system version (RegUtil)
+:TIME Time([option_out [,time [option_in]]]) /* (Built-in Function) Option is "C", "E", "H", "J", "L", "M", "N", "O", "R", "S", "T" */
+:TRACE Trace([newsetting]) /* (Built-in Function) */
+:TRANSLATE Translate(string [,[tableout] [,[tablein] [,padchar]]]) /* (Built-in Function) */
+:TRIM Trim(string) /* (Built-in Function) (AREXX) */
+:TRUNC Trunc(number [,length]) /* (Built-in Function) */
+:UNAME Uname([option]) /* (Built-in Function) (REGINA) Option is "A", "S", "N", "R", "V" "M" */
+:UNIXERROR Unixerror(errorno) /* (Built-in Function) (REGINA) */
+:UPPER Upper(string) /* (Built-in Function) (AREXX/REGINA) */
+:USERID Userid() /* (Built-in Function) (REGINA) */
+:VALUE Value(symbol [,[value], [pool]]) /* (Built-in Function) */
+:VERIFY Verify(string, ref [,[option] [,start]]) /* (Built-in Function) */
+:W32BACKUPEVENTLOG w32backupeventlog(handle, filename) ® 0 or 1: creates a back-up of an event log /* (w32funcs) */
+:W32CALLFUNC w32callfunc(handle, name[, typelist, parm1, ...]) ® value /* (w32funcs) */
+:W32CALLPROC w32callproc(handle, name[, typelist, parm1, ...]) ® 0 or 1 /* (w32funcs) */
+:W32CLEAREVENTLOG w32cleareventlog(handle[, filename]) ® 0 or 1: clears the contents of an event log /* (w32funcs) */
+:W32CLIPCLOSE w32clipclose( ) ® 0 or 1: closes the clipboard; /* (w32funcs) */
+:W32CLIPEMPTY w32clipempty( ) ® 0 or 1: empties the clipboard. /* (w32funcs) */
+:W32CLIPENUMFORMAT w32clipenumformat(stem) ® 0 or 1: lists the numeric identifiers of formats which currently have data; /* (w32funcs) */
+:W32CLIPFORMATNAME 32clipformatname(formatid) ® value: returns the name associated with a numeric identifier; /* (w32funcs) */
+:W32CLIPGET w32clipget([format]) ® value: retrieves the data in the specified format; /* (w32funcs) */
+:W32CLIPGETSTEM w32clipgetstem(stemname) ® 0 or 1: retrieves text and writes it to a stem; /* (w32funcs) */
+:W32CLIPOPEN w32clipopen( ) ® 0 or 1: locks the the clipboard open for use; /* (w32funcs) */
+:W32CLIPREGISTERFORMAT w32clipregisterformat(format) ® value: registers a format name and returns its numeric identifier; /* (w32funcs) */
+:W32CLIPSET w32clipset(value[, format]) ® 0 or 1: writes the specified value in the specified format; /* (w32funcs) */
+:W32CLIPSETSTEM w32clipsetstem(stemname) ® 0 or 1: writes the contents of the stem as text; /* (w32funcs) */
+:W32CLIPTESTFORMAT w32cliptestformat(stemname) ® id, 0, or –1: returns first available format from list; /* (w32funcs) */
+:W32CLOSEEVENTLOG w32closeeventlog(handle) ® 0 or 1: close an event log /* (w32funcs) */
+:W32CREATEOBJECT w32createobject(ProgramId) ® handle or 0 /* (w32funcs) */
+:W32DEBUG w32debug(message) -> 0 /* (w32funcs) */
+:W32DLGCHOOSECOLOR w32dlgchoosecolor([red, green, blue]) ® red green blue: presents a colour selection dialog; /* (w32funcs) */
+:W32DLGCHOOSECOLOUR w32dlgchoosecolour([red, green, blue]) ® red green blue: presents a colour selection dialog; /* (w32funcs) */
+:W32DLGOPENFILE w32dlgopenfile(file.[, deffile][, filter.][, directory][, title][, flags]) ® 0 or error: presents a ‘file open’ dialog; /* (w32funcs) */
+:W32DLGSAVEFILE w32dlgsavefile(file.[, deffile][, filter.][, directory][, title][, flags]) ® 0 or error: presents a ‘file save’ dialog; /* (w32funcs) */
+:W32DROPFUNCS call w32DropFuncs /* (w32funcs) */
+:W32EXECUTE w32execute(file) ® 0 or error code: executes a program; /* (w32funcs) */
+:W32EXECUTESTEM w32executestem(file., result.) ®0: executes one or more programs and returns their return codes in the result stem; /* (w32funcs) */
+:W32EXPANDENVIRONMENTSTRINGS w32expandenvironmentstrings(string) ® string: expands environment variables in a string /* (w32funcs) */
+:W32FINDEVENTLOGENTRY w32findeventlogentry(handle, recnum, [stem]) ® 0 or 1: retrieves the information for an event /* (w32funcs) */
+:W32FUNCADD w32funcadd(function, library, rexxname[, argtypes] [,returntype]) ® 0 or 1: registers a function from a DLL; /* (w32funcs) */
+:W32FUNCDROP w32funcdrop([rexxname]) ® 0 or 1: unregisters one or all functions registered using w32funcadd; /* (w32funcs) */
+:W32FUNCQUERY w32funcquery(rexxname) ® 0 or 1: determines whether the named function has been registered. /* (w32funcs) */
+:W32GETERROR w32geterror() -> string /* (w32funcs) */
+:W32GETEVENTCATEGORY w32geteventcategory( ) ® category: returns the type for the last event returned by w32findeventlogentry /* (w32funcs) */
+:W32GETEVENTDATA w32geteventdata( ) ® data: returns the message for the last event returned by w32findeventlogentry /* (w32funcs) */
+:W32GETEVENTID w32geteventid( ) ® id: returns the ID for the last event returned by w32findeventlogentry /* (w32funcs) */
+:W32GETEVENTNUMSTRINGS w32geteventnumstrings( ) ® num strings: returns the number of arguments for the last event returned by w32findeventlogentry /* (w32funcs) */
+:W32GETEVENTSTRING w32geteventstring(index)®string: returns the indexth argument for the last event returned by w32findeventlogentry /* (w32funcs) */
+:W32GETEVENTTIMEGENERATED w32geteventtimegenerated( )®time generated: returns the time generated for the last event returned by w32findeventlogentry /* (w32funcs) */
+:W32GETEVENTTIMEWRITTEN w32geteventtimewritten( ) ® time written: returns the time written for the last event returned by w32findeventlogentry /* (w32funcs) */
+:W32GETEVENTTYPE w32geteventtype( ) ® type: returns the type for the last event returned by w32findeventlogentry /* (w32funcs) */
+:W32GETNUMBEROFEVENTLOGRECORDS w32getnumberofeventlogrecords(handle) ® the number, or -1: returns the number of events in a log /* (w32funcs) */
+:W32GETOBJECT w32getobject([FileName], [ProgramId]) ® handle or 0 /* (w32funcs) */
+:W32GETOLDESTEVENTLOGRECORD w32getoldesteventlogrecord(handle) ® the number, or -1: returns the number of the first event in a log /* (w32funcs) */
+:W32GETPROPERTY w32getproperty(handle, name[,typelist, parm1, ...])) ® value /* (w32funcs) */
+:W32GETSUBOBJ w32getsubobj(handle, name[, typelist, parm1, ...]) ® handle or 0 /* (w32funcs) */
+:W32LOADFUNCS call rxfuncadd ’w32loadfuncs’, ’w32util’, ’w32loadfuncs’; call w32LoadFuncs /* (w32funcs) */
+:W32MENUADDITEM w32menuadditem([menu], [submenu], display, path, [workingdir], [arguments], [icon number], [icon file], [hot key]) ® 0 or error code: creates or replaces a shortcut; /* (w32funcs) */
+:W32MENUEDITITEM w32menuedititem([menu], [submenu], display, [path], [workingdir], [arguments], [icon number], [icon file], [hot key]) ® 0 or error code: modifies a shortcut; /* (w32funcs) */
+:W32MENUMOVE w32menumove([menu], submenu, [newmenu], [newsubmenu]) ® 0 or error code: renames or moves a folder. /* (w32funcs) */
+:W32MENUMOVEITEM w32menumoveitem([menu], [submenu], oldname, newname) ® 0 or error code: renames or moves a shortcut; /* (w32funcs) */
+:W32MENUREMOVEITEM w32menuremoveitem([menu], [submenu], display) ® 0 or error code: removes a shortcut; /* (w32funcs) */
+:W32OLECLEANUP w32olecleanup( ) ® nothing /* (w32funcs) */
+:W32OLEGETARRAY w32olegetarray(handle, name, stemname) ® 0 or 1 /* (w32funcs) */
+:W32OLEGETERROR w32olegeterror( ) ® string /* (w32funcs) */
+:W32OLEGETERROR w32olegeterror() -> string /* (w32funcs) */
+:W32OLEGETID w32olegetid(handle, name[, name2, ...]) ® dispid [dispid2 ...] /* (w32funcs) */
+:W32OLENEXT w32olenext(object[, skipcount) ® handle or 0 /* (w32funcs) */
+:W32OLEPUTARRAY w32oleputarray(handle, name, stemname) ® 0 or 1 [not implemented] /* (w32funcs) */
+:W32OPENBACKUPEVENTLOG w32openbackupeventlog([hostname], filename) ® handle, or 0: opens an event log back-up /* (w32funcs) */
+:W32OPENEVENTLOG w32openeventlog(host, source) ® handle, or 0: open an event log /* (w32funcs) */
+:W32PUTPROPERTY w32putproperty(object, name, typelist, value) ® 0 or 1 /* (w32funcs) */
+:W32REGCLOSEKEY w32regclosekey(key) ® 0 or 1: closes a key /* (w32funcs) */
+:W32REGCONNECTREGISTRY w32regconnectregistry(hostname,key) ® key: open a registry on another machine /* (w32funcs) */
+:W32REGCREATEKEY w32regcreatekey(key, subkeyname) ® key: creates a key /* (w32funcs) */
+:W32REGDELETEKEY w32regdeletekey(hkey, subkeyname) ® 0 or 1: deletes a key /* (w32funcs) */
+:W32REGDELETEVALUE w32regdeletevalue(hkey, valuename) ® 0 or 1: deletes a value /* (w32funcs) */
+:W32REGENUMKEY w32regenumkey(hkey, [index], [stem]) ® keyname: gets the names of a key’s keys /* (w32funcs) */
+:W32REGENUMVALUE w32regenumvalue(hkey, [index], [stem]) ® value: gets the names of a key’s values /* (w32funcs) */
+:W32REGFLUSHKEY w32regflushkey(hkey) ® 0 or 1: flushes values to the registry /* (w32funcs) */
+:W32REGGETKEYSECDESC w32reggetkeysecdesc(hkey) ® secdesc: gets a key’s security descriptor /* (w32funcs) */
+:W32REGLOADKEY w32regloadkey(hkey, subkey, filename) ® 0 or 1: attaches a ‘hive’ as a key; /* (w32funcs) */
+:W32REGOPENKEY w32regopenkey(key, [subkeyname]) ® key: opens a key /* (w32funcs) */
+:W32REGQUERYINFOKEY w32regqueryinfokey(hkey, infokey, [stem]) ® desired info: retrieves a variety of information about a key /* (w32funcs) */
+:W32REGQUERYVALUE w32regqueryvalue(key, entry, [type], [stem]) ® value: retrieves a value /* (w32funcs) */
+:W32REGQUERYVALUETYPE w32regqueryvaluetype(key, entry) ® type: retrieves a value’s type /* (w32funcs) */
+:W32REGRESTOREKEY w32regrestorekey(hkey, filename) ® 0 or 1: restore a key and its subkeys from a file /* (w32funcs) */
+:W32REGSAVEKEY w32regsavekey(hkey, filename) ® 0 or 1: save a key and its sub-keys to a file /* (w32funcs) */
+:W32REGSETKEYSECDESC w32regsetkeysecdesc(hkey, secdesc) ® 0 or 1: sets a key’s security descriptor /* (w32funcs) */
+:W32REGSETVALUE w32regsetvalue(hkey, entry, type, data, [stem]) ® 0 or 1: sets a value /* (w32funcs) */
+:W32REGUNLOADKEY w32regunloadkey(hkey, subkey) ® 0 or 1: detaches a hive /* (w32funcs) */
+:W32RELEASEOBJECT w32releaseobject(handle[, handle, ...]) ® 0 (success) or 1 (failure) /* (w32funcs) */
+:W32SVCINSTALL w32svcinstall(servicename, displayname, programpath[, autostart, user, password])®0 or error code: installs a service. /* (w32funcs) */
+:W32SVCREMOVE w32svcremove(name) ® 0 or error code: removes the named service from the list of services; /* (w32funcs) */
+:W32SVCSTART w32svcstart(name) ® 0 or error code: starts the named service; /* (w32funcs) */
+:W32SVCSTOP w32svcstop(name) ® 0 or error code: stops the named service; /* (w32funcs) */
+:W32SYSGETCOLOURS w32sysgetcolours(stem) ® 0 or 1: returns the shell colours; /* (w32funcs) */
+:W32SYSGETCOMPUTERNAME w32sysgetcomputername( ) ® value: returns the (NetBIOS) name of the machine; /* (w32funcs) */
+:W32SYSGETHARDWAREPROFILENAME w32sysgethardwareprofilename( ) ® value: returns the name of the active hardware profile; /* (w32funcs) */
+:W32SYSGETOSVERSION w32sysgetosversion( ) ® major ’.’ minor build platform CSDVersion: returns information about the operating system version; /* (w32funcs) */
+:W32SYSGETPARAMETER w32sysgetparameter(parm) ® value(s): returns the value of various system parameters; /* (w32funcs) */
+:W32SYSGETPOWERSTATUS w32sysgetpowerstatus( ) ® line battery batterypct batterytime batterylife: returns information about the system’s power source; /* (w32funcs) */
+:W32SYSGETUSERNAME w32sysgetusername( ) ® value: returns the current logged-in user’s name; /* (w32funcs) */
+:W32SYSLONGFILENAME w32syslongfilename(filename [, filename2, . . . ]) -¿ longname [longname2 . . . ]: the inverse of sysshortfilename. /* (w32funcs) */
+:W32SYSSETCOLOURS w32syssetcolours(stem) ® 0 or 1: sets the shell colours; /* (w32funcs) */
+:W32SYSSETCOMPUTERNAME w32syssetcomputername(newname) ® 0 or 1: sets the (NetBIOS) name of the machine; /* (w32funcs) */
+:W32SYSSETPARAMETER w32syssetparameter(parm, permanent, value[, value2, ...]) ® 0 or 1: sets the value of various system parameters; /* (w32funcs) */
+:W32SYSSETPOWERSTATE w32syssetpowerstate([how][, force]) ® 0 or 1: suspends operation of the machine; /* (w32funcs) */
+:W32SYSSHORTFILENAME w32sysshortfilename(filename [, filename2, . . . ]) -¿ shortname [shortname2 . . . ]: returns the short (8.3 with tildes) name associated with each real name passed as an argument; /* (w32funcs) */
+:W32SYSSHUTDOWN w32sysshutdown([how][, force]) ® 0 or 1: shuts down the system, or logs off the current user; /* (w32funcs) */
+:W32VERSION parse value w32version() with ver ’.’ rel ’.’ mod file /* (w32funcs) */
+:W32WRITEEVENTLOG w32writeeventlog([hostname], source, [eventtype], [category], eventid, [data], [string1, ...]) ® 0 or 1: writes an event log entry /* (w32funcs) */
+:WORD Word(string, wordno) /* (Built-in Function) */
+:WORDINDEX Wordindex(string, wordno) /* (Built-in Function) */
+:WORDLENGTH Wordlength(string, wordno) /* (Built-in Function) */
+:WORDPOS Wordpos(phrase, string [,start]) /* (Built-in Function) */
+:WORDS Words(string) /* (Built-in Function) */
+:WRITECH Writech(file, string) /* (Built-in Function) (AREXX) */
+:WRITELN Writeln(file, string) /* (Built-in Function) (AREXX) */
+:X2B X2B(hexstring) /* (Built-in Function) */
+:X2C X2C(hexstring) /* (Built-in Function) */
+:X2D X2D(hexstring [,length]) /* (Built-in Function) */
+:XRANGE Xrange([start] [,end]) /* (Built-in Function) */
+
+:ARGINSTR Arg [ template ] [, [ template ] ... ] /* Equivalent to Parse Upper Arg ... */
+:CALLINSTR Call routine [ parameter ] [, [ parameter ] ... ] ;
+                      { ON | OFF } condition [ NAME label ] ; 
+:DOENDINSTR Do [ repetitor ] [ conditional ] ;
+    [ clauses ]
+  END [ symbol ] ;
+   repetitor : = symbol = expri [ TO exprt ]
+   [ BY exprb ] [ FOR exprf ]
+  exprr
+  FOREVER
+  conditional : = WHILE exprw
+  UNTIL expru
+:DROPINSTR Drop symbol [ symbol ... ] ;
+:EXITINSTR Exit [ expr ] ;
+:IFTHENELSEINSTR If expr [;] THEN [;] statement
+  [ ELSE [;] statement ]
+:INTERPRETINSTR Interpret expr ;
+:ITERATEINSTR Iterate [ symbol ] ;
+:LEAVEINSTR Leave [ symbol ] ;
+:NOPINSTR Nop ;
+:NUMERICINSTR Numeric DIGITS [ expr ] ;
+  FORM [ SCIENTIFIC | ENGINEERING | [ VALUE ] expr ] ;
+  FUZZ [ expr ] ;
+:OPTIONSINSTR Options expr ;
+:PARSEINSTR Parse [ option ] [ CASELESS ] type [ template ] ;
+  option = { UPPER | LOWER }
+  type = { ARG | LINEIN | PULL | SOURCE | VERSION | VALUE [
+  expr ] WITH | VAR symbol }
+:PROCEDURE Procedure [ EXPOSE [ varref [ varref ... ] ] ] ;
+  varref = { symbol | ( symbol ) }
+:PULLINSTR Pull [ template ] ;
+:PUSHINSTR Push [ expr ] ;
+:QUEUEINSTR Queue [ expr ] ;
+:RETURNINSTR Return [ expr ] ;
+:SAYINSTR Say [ expr ] ;
+:SELECTWHENOTHERWISEINSTR Select ; whenpart [ whenpart ... ] [ OTHERWISE [;]
+  [ statement ... ] ] END ;
+  whenpart : WHEN expr [;] THEN [;] statement
+:SIGNALINSTR SignalL = { string | symbol } ;
+  [ VALUE ] expr ;
+  { ON | OFF } condition [ NAME
+  { string | symbol } ] ;
+:TRACEINSTR Trace [ number | setting | [ VALUE ] expr ] ;
+  setting = A | S | C | E | F | I | L | N | O | R | S
+:UPPERINSTR Upper symbol [ symbol [ symbol [...] ] ] ;

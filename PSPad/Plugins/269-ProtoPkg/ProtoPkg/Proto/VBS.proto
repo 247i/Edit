@@ -1,0 +1,560 @@
+<!---
+	Filename		  : VBS.proto - Prototypes for VBS PSPad scripts
+
+	Created			  : 07 April 2010 (17:00:56)
+	Created by		: Russ Williams
+
+	Comments	  	: Keywords must be preceded by ":".
+	                Entries are (mostly) sorted only to make them easy to correct.
+                  Proto does not depend on the sort.
+                  Keywords are capitalized for user convenience. Proto will capitalize
+                  whatever you give before searching for a match.
+                  Hyphenated keywords have had their hyphens removed because "ecselwordleft"
+                  treats hyphens as word breaks.
+--->
+: = editorcommands | pspadactions | statements
+:AADDDIACRITIC aAddDiacritic '(PsPad action)	Add accent marks (dictionary is required)
+:AADDFILE aAddFile '(PsPad action)	Add current file to project
+:AADDFILESTOFOLDER aAddFilesToFolder '(PsPad action)	Add Files to project - dialog
+:AADDFOLDER aAddFolder '(PsPad action)	New folder to project
+:AALLTOASCII aAllToASCII '(PsPad action)	Remove Accent from chars
+:AAUTOCOMPL aAutoCompl '(PsPad action)	Auto completion
+:AAUTOREFRESH aAutoRefresh '(PsPad action)	Set Autorefresh flag for window
+:ABLOCKALIGN aBlockAlign '(PsPad action)	Align selection to block
+:ABLOCKCENTER aBlockCenter '(PsPad action)	Justify block to the center
+:ABLOCKLEFT aBlockLeft '(PsPad action)	Justify block to the left
+:ABLOCKRIGHT aBlockRight '(PsPad action)	Justify block to the right
+:ABS Abs(number) 'Returns the absolute value of a number. Abs(Null) = Null; Abs(uninitialized) = 0
+:ACAPITALIZE aCapitalize '(PsPad action)	Capitalize block
+:ACLOSE aClose '(PsPad action)	Close window
+:ACLOSEALL aCloseAll '(PsPad action)	Close All
+:ACODEEXPLORER aCodeExplorer '(PsPad action)	Code Explorer window
+:ACODEFORMAT aCodeFormat '(PsPad action)	Code Case Change dialog
+:ACOLORSELECT aColorSelect '(PsPad action)	Color Selector window
+:ACOMMENT aComment '(PsPad action)	Add/Remove Comment
+:ACOMPILE aCompile '(PsPad action)	Compile
+:ACOPY aCopy '(PsPad action)	Copy
+:ACOPYLINE aCopyLine '(PsPad action)	Copy Line
+:ACSSTOINLINE aCSSToInLine '(PsPad action)	Reformat into Inline CSS
+:ACSSTOSTRUCTURE aCSSToStructure '(PsPad action)	Reformat into Structured CSS
+:ACSVIMPORT aCSVImport '(PsPad action)	Import from CSV dialog
+:ACTIVATE .activate() '(Editor Object Function) Set focus to editor. Returns True/1 on success.
+:ACUT aCut '(PsPad action)	Cut
+:ADATETIME aDateTime '(PsPad action)	Insert Date Time
+:ADATETIMEDIALOG aDateTimeDialog '(PsPad action)	Date Time Dialog
+:ADDITIONOPERATOR (+) 'Sums two numbers.
+:ADDMENUITEMGLOBALFUNCTION addMenuItem( captionstring, [submenustring | ""], procedurename, [shortcutstring]) 'Creates menu item in editor. It is contained in script Init subroutine and works only during Init phase. All other calling is ignored. "&" may be used in caption to assign menu shortcuts. Caption set as "-" creates a line divider. Returns Long(1)
+:ADECTOHEX aDecToHex '(PsPad action)	Decimal to Hexadecimal selection
+:ADELETE aDelete '(PsPad action)	Delete
+:ADELFOLDER aDelFolder '(PsPad action)	Remove Folder from project
+:ADELMARK aDelMark '(PsPad action)	Delete Bookmark
+:ADELMARKS aDelMarks '(PsPad action)	Delete all Bookmarks
+:ADIFFSAME aDiffSame '(PsPad action)	Text Diff with File Contents on Disk
+:AEXIT aExit '(PsPad action)	Exit
+:AEXPCLIPHTML aExpClipHTML '(PsPad action)	Export to Clipboard as HTML
+:AEXPCLIPRTF aExpClipRTF '(PsPad action)	Export to Clipboard as RTF
+:AEXPCLIPTEX aExpClipTeX '(PsPad action)	Export to Clipboard as &TeX
+:AEXPCLIPXHTML aExpClipXHTML '(PsPad action)	Export to clipboard as XHTML
+:AEXPORT aExport '(PsPad action)	Export dialog
+:AFILESSEARCH aFilesSearch '(PsPad action)	Search / Replace in Files dialog
+:AFIND aFind '(PsPad action)	Find dialog
+:AFINDNEXT aFindNext '(PsPad action)	Find Next
+:AFINDPREV aFindPrev '(PsPad action)	Find Previous
+:AFINDPREVWORD aFindPrevWord '(PsPad action)	Previous Occurrence of Current Word
+:AFINDWORD aFindWord '(PsPad action)	Next Occurrence of Current Word
+:AFONT aFont '(PsPad action)	Font dialog
+:AFULLSCREEN aFullScreen '(PsPad action)	Full Screen mode
+:AGOOGLESEARCH aGoogleSearch '(PsPad action)	Google Search dialog
+:AGOTOLINE aGotoLine '(PsPad action)	Goto Line dialog
+:AGUID aGUID '(PsPad action)	Insert GUID
+:AHEXTODEC aHexToDec '(PsPad action)	Hexadecimal to Decimal selection
+:AHTMLCOMPRESS aHTMLCompress '(PsPad action)	Compress HTML code
+:AHTMLCHECK aHtmlCheck '(PsPad action)	Check HTML code
+:AHTMLPREV aHTMLPrev '(PsPad action)	HTML Page Preview
+:AHTMLREFORMAT aHTMLReformat '(PsPad action)	Reformat HTML code
+:AHTMLSELTAG aHTMLSelTag '(PsPad action)	Select TAG
+:AINDENT aIndent '(PsPad action)	Indent Block
+:AINFO aInfo '(PsPad action)	File Info
+:AINSERFILE aInserFile '(PsPad action)	Insert From File...
+:AINSERTTEXT aInsertText '(PsPad action)	Insert Text into Lines...
+:AINVERTCASE aInvertCase '(PsPad action)	Invert Case
+:AJOINLINE aJoinLine '(PsPad action)	Join Lines
+:ALANGHELP aLangHelp '(PsPad action)	Help for Language
+:ALASTUSERCONVERTOR aLastUserConvertor '(PsPad action)	Run Last used convertor
+:ALINENUM aLineNum '(PsPad action)	Line Numbers
+:ALOGWINDOW aLogWindow '(PsPad action)	Show / Hide LOG window
+:ALOREMIPSUM aLoremIpsum '(PsPad action)	Lorem Ipsum generator
+:ALOWERCASE aLowerCase '(PsPad action)	To Lower Case
+:AMACROMGR aMacroMgr '(PsPad action)	Macro Manager
+:AMACROPLAY aMacroPlay '(PsPad action)	Play Macro
+:AMACRORECORD aMacroRecord '(PsPad action)	Start / Stop Recording
+:AMAILCONTENTS aMailContents '(PsPad action)	As e-mail Contents
+:AMAILFILE aMailFile '(PsPad action)	As e-mail Attachment
+:AMARKDOWN aMarkDown '(PsPad action)	Next Bookmark
+:AMARKLIST aMarkList '(PsPad action)	Bookmark List
+:AMARKUP aMarkUp '(PsPad action)	Previous Bookmark
+:AMATCHBRACKET aMatchBracket '(PsPad action)	Matching Bracket
+:AMD5GEN aMD5Gen '(PsPad action)	Hash generator dialog
+:AMOVEAS aMoveAs '(PsPad action)	Move as dialog
+:ANEW aNew '(PsPad action)	New file dialog
+:AOPEN aOpen '(PsPad action)	Open file dialog
+:AOPENCOPY aOpenCopy '(PsPad action)	Open Active File with New Name dialog
+:AOPENHEX aOpenHex '(PsPad action)	Open in HEX Editor dialog
+:AOPENSAME aOpenSame '(PsPad action)	Open R/O copy of Active File
+:AOPENSELECTED aOpenSelected '(PsPad action)	Open file appointed by selection
+:AOPENWWWFILE aOpenWWWFile '(PsPad action)	Open File from Internet dialog
+:APAGESETUP aPageSetup '(PsPad action)	Page Setup dialog
+:APASTE aPaste '(PsPad action)	Paste
+:APASTEHTML aPasteHTML '(PsPad action)	Paste as HTML
+:APASTENOMOVE aPasteNoMove '(PsPad action)	Paste Without Cursor Change
+:APPENDTEXT .appendText(string) '(Editor Object Function) Appends text to editor end. Returns True/1 on success.
+:APRINT aPrint '(PsPad action)	Print file
+:APRINTPREV aPrintPrev '(PsPad action)	Print Preview
+:APRINTSETUP aPrintSetup '(PsPad action)	Printer Settings dialog
+:APROJADDOPEN aProjAddOpen '(PsPad action)	Add all open files to project
+:APROJFOLDERCLOSE aProjFolderClose '(PsPad action)	Close files of current project folder
+:APROJFOLDEROPEN aProjFolderOpen '(PsPad action)	Open files of current project folder
+:APROJFROMDIR aProjFromDir '(PsPad action)	Create Project from Directory dialog
+:APROJINFO aProjInfo '(PsPad action)	Project Information dialog
+:APROJMAINFILE aProjMainFile '(PsPad action)	Set File as Main for Compiler
+:APROJNEW aProjNew '(PsPad action)	New Project (closes all)
+:APROJOPEN aProjOpen '(PsPad action)	Open Project dialog
+:APROJSAVE aProjSave '(PsPad action)	Save Project
+:APROJSAVEAS aProjSaveas '(PsPad action)	Save Project as dialog
+:APROJSETTINGS aProjSettings '(PsPad action)	Project Settings dialog
+:APROJSHOW aProjShow '(PsPad action)	Show/hide left Panel:ARGLIST [ByVal | ByRef] varname[( )] 'Used with various statements
+:AREADONLY aReadOnly '(PsPad action)	Read Only on/off for file
+:AREDO aRedo '(PsPad action)	Redo
+:AREFORMAT aReformat '(PsPad action)	Reformat block (paragraph=blank line)
+:AREFORMAT2 aReformat2 '(PsPad action)	Reformat block (paragraph=short line)
+:AREMOVEBLANKLINES aRemoveBlankLines '(PsPad action)	Remove Blank Lines
+:AREMOVEFILE aRemoveFile '(PsPad action)	Remove File from Project
+:AREMOVEREDUNDANTBLANK aRemoveRedundantBlank '(PsPad action)	Remove Redundant Blank Lines
+:AREMOVESPACES aRemoveSpaces '(PsPad action)	Remove Redundant Spaces dialog
+:AREMOVETAGS aRemoveTags '(PsPad action)	Remove HTML tags - it opens result in new window
+:AREOPEN aReOpen '(PsPad action)	Reopen Active File
+:AREPEATLASTACTION aRepeatLastAction '(PsPad action)	Repeat last command
+:AREPLACE aReplace '(PsPad action)	Replace dialog
+:AROLLBAR aRollBar '(PsPad action)	Ruler on/off
+:ARRAY Array(arglist) 'Returns a Variant containing a (single-dimensioned) array.
+:ARTFIMPORT aRTFImport '(PsPad action)	Import text from RTF:ARITHMETIC-OPERATORS = EXPONENTIATION | MULTIPLICATION | DIVISION | INTEGERDIVISION | MOD | Addition |
+:ASAVE aSave '(PsPad action)	Save current file
+:ASAVEALL aSaveAll '(PsPad action)	Save All files
+:ASAVEAS aSaveAs '(PsPad action)	Save As dialog
+:ASAVEBLOCK aSaveBlock '(PsPad action)	Save Block As dialog
+:ASAVESAMETIME aSaveSameTime '(PsPad action)	Save Without changing File Date
+:ASAVETOFTP aSaveToFTP '(PsPad action)	Save to FTP:ASC Asc(string) 'Returns the ANSI character code corresponding to the first letter in a string.
+:ASELECTALL aSelectAll '(PsPad action)	Select All
+:ASELECTNEXT aSelectNext '(PsPad action)	Next Window
+:ASELECTPREW aSelectPrew '(PsPad action)	Previous Window
+:ASELMATCHBRACKET aSelMatchBracket '(PsPad action)	Select Inside Brackets
+:ASELSTRING aSelString '(PsPad action)	Select String
+:ASENDTODISK aSendToDisk '(PsPad action)	Save to Drive A:
+:ASENTENSIZE aSentensize '(PsPad action)	Sentensize selection
+:ASETMAIN aSetMain '(PsPad action)	Set as Main File for Compiler
+:ASETMARK aSetMark '(PsPad action)	Set Bookmark
+:ASHELLOPEN aShellOpen '(PsPad action)	Open with associated application
+:ASHOWCONTROLBAR aShowControlBar '(PsPad action)	Show/hide all toolbars
+:ASHOWSPECCHAR aShowSpecChar '(PsPad action)	Show/hide nonprinted characters
+:ASORT aSort '(PsPad action)	Sort dialog
+:ASPELL aSpell '(PsPad action) Online Spell Check on/off
+:ASPELLCHECK aSpellCheck '(PsPad action) Spell Check with dialog
+:ASPELLSETT aSpellSett '(PsPad action) Spell Settings dialog
+:ASSIGNACTIVEEDITOR .assignActiveEditor() '(Editor Object Function) Assign active editor window into object and show it.
+:ASSIGNEDITORBYINDEX .assignEditorByIndex(integer) '(Editor Object Function) Assign editor window to object by editor index.
+:ASSIGNEDITORBYNAME .assignEditorByName(file_name_string) '(Editor Object Function) Assign editor window to object by file name.
+:ASSIGNMENTOPERATOR (=) 'Assigns a value to a variable or property.
+:ASTAYONTOP aStayOnTop '(PsPad action)	Stay on Top on/off
+:ASWAPLINEABOVE aSwapLineAbove '(PsPad action)	Swap line with line above (applicable to block)
+:ASWAPLINEBELLOW aSwapLineBellow '(PsPad action)	Swap line with line bellow (applicable to block)
+:ASWITCHLOG aSwitchLog '(PsPad action)	Jump to Editor / LOG
+:ASYNTAX aSyntax '(PsPad action)	Syntax on/off
+:ASYNTAXCHANGE aSyntaxChange '(PsPad action)	Change Syntax dialog
+:ASYSEDIT aSysEdit '(PsPad action)	Open System Files (Autoexc, Config, ...)
+:ATABTOSPACES aTabToSpaces '(PsPad action)	Convert Tabs to Spaces dialog
+:ATAGTOLOWERCASE aTagToLowercase '(PsPad action) Tags to Lowercase
+:ATAGTOUPPERCASE aTagToUpperCase '(PsPad action) Tags to Uppercase
+:ATEXTTOHTML aTextToHTML '(PsPad action) Text to HTML
+:ATN Atn(number) 'Returns the arctangent of any valid numeric expression.
+:ATOJSCRIPT aToJScript '(PsPad action) Selection to JavaScript
+:ATOPHP aToPHP '(PsPad action) Selection to PHP variable
+:AUNDO aUndo '(PsPad action) Undo
+:AUNINDENT aUnIndent '(PsPad action) UnIndent Block
+:AUNQUOTE aUnQuote '(PsPad action) Remove Email Quoting
+:AUPPERCASE aUpperCase '(PsPad action) To Upper Case
+:AUSERCONVERTORS aUserConvertors '(PsPad action) User Convertors dialog
+:AWINDCASCADE aWindCascade '(PsPad action) Cascade windows
+:AWINDSPLITHORIZ aWindSplitHoriz '(PsPad action) Horizontal Split current file
+:AWINDSPLITVERT aWindSplitVert '(PsPad action) Vertical Split current file
+:AWINDTILE aWindTile '(PsPad action) Arrange windows
+:AWINDTILEHORIZ aWindTileHoriz '(PsPad action) Tile windows Horizontal
+:AWINDTILEVERT aWindTileVert '(PsPad action) Tile windows Vertical
+:AWORDWRAP aWordWrap '(PsPad action) Word Wrap Lines on/off
+:BLOCKBEGINX .blockBeginX() '(Editor Object Function) Returns block selection bounds, begin X.
+:BLOCKBEGINY .blockBeginY() '(Editor Object Function) Returns block selection bounds, begin y.
+:BLOCKENDX .blockEndX() '(Editor Object Function) Returns block selection bounds, end x.
+:BLOCKENDY .blockEndY() '(Editor Object Function) Returns block selection bounds, end y.
+:CALL [Call] name [argumentlist | ( argumentlist )] /* If "Call" specified, you must enclose argumentlist in parentheses, and the procedure's return value is discarded. */
+:CARETX .caretX(integer) '(Editor Object Function) Sets/returns editor CaretX position.
+:CARETY .caretY(integer) '(Editor Object Function) Sets/returns editor CaretY position.
+:CBOOL CBool(expression) 'Returns the argument value converted to a Variant of subtype Boolean. CBool(0) = False.
+:CBYTE CByte(expression) 'Returns the argument value converted to a Variant of subtype Byte.
+:CCUR CCur(expression) 'Returns the argument value converted to a Variant of subtype Currency.
+:CDATE CDate(date) 'Returns the argument value converted to a Variant of subtype Date.
+:CDBL CDbl(expression) 'Returns the argument value converted to a Variant of subtype Double.
+:CHR Chr(charcode) 'Returns the character associated with the specified ANSI character code.
+:CINT CInt(expression) 'Returns the argument value converted to a Variant of subtype Integer.
+\:CLASS Class name 'Declares the name of a class, as well as a definition of the variables, properties, and methods that comprise the class.
+    statements
+  End Class
+:CLNG CLng(expression) 'Returns the argument value converted to a Variant of subtype Long.
+:CLOSEALLEDITORS closeAllEditors() 'Closes all editor windows.
+:CLOSEEDITORBYINDEX closeEditorByIndex(integer) 'Closes editor by index. Returns boolean
+:CLOSEEDITORBYTITLE closeEditorByTitle(file_name_string) 'Closes editor by filename. Returns boolean
+:CLOSEFILE .closeFile() '(Editor Object Function) Closes file. Returns boolean
+:COLORCONSTANTS = vbBlack | vbRed | vbGreen | vbYellow | vbBlue | vbMagenta | vbCyan | vbWhite '&h00, &hFF, &hFF00, &hFFFF, &hFF0000, &hFF00FF, &hFFFF00, &hFFFFFF
+:COMMAND .command(editor_command_string) '(Editor Object Function) Runs editor command. Returns boolean (True if successful).
+:COMPARISON = vbBinaryCompare | vbTextCompare '0, 1
+:COMPARISONOPERATORS = (<) | (<=) | (>) | (>=) | (=) | (<>) 'Less than, Less than or equal to, Greater than, Greater than or equal to, Equal to, Not equal to
+:CONCATENATIONOPERATORS = (&) | (+)
+:CONST [Public | Private] Const constname = expression /* Declares constants for use in place of literal values. */
+:CONSTANTS = ColorConstants | ComparisonConstants | DateandTimeConstants | DateFormatConstants | MiscellaneousConstants | MsgBoxConstants | StringConstants | TristateConstants | VarTypeConstants
+:CONVERSIONS = asc | cbyte | cdate | chr | clng | cstr | oct
+:COS Cos(number) 'Returns the cosine of an angle (expressed in radians).
+:CREATEOBJECT CreateObject(servername.typename [, locationname]) 'Creates and returns a reference to an Automation object.
+:CSNG CSng(expression) 'Returns the argument value converted to a Variant of subtype Single.
+:CSTR CStr(expression) 'Returns the argument value converted to a Variant of subtype String.
+:DATE Date 'Returns the current system date.
+:DATEADD DateAdd(intervalstring, number, date) Returns a date to which a specified time interval has been added. ("yyyy" = Year, "q" = Quarter, "m" = Month, "y" = Day of year (same as Day), "d" = Day, "w" = Weekday (same as Day), "ww" = Week, "h" = Hour, "n" = Minute, "s" = Second)
+:DATEDIFF DateDiff(intervalstring, date1, date2 [,firstdayofweek[, firstweekofyear]]) 'Returns the number of intervals between two dates. ('"yyyy" = Year, "q" = Quarter, "m" = Month, "y" = Day of year (same as Day), "d" = Day, "w" = Weekday (same as Day), "ww" = Week, "h" = Hour, "n" = Minute, "s" = Second)
+:DATEPART DatePart(intervalstring, date[, firstdayofweek[, firstweekofyear]]) 'Returns the specified part of a given date. ("yyyy" = Year, "q" = Quarter, "m" = Month, "y" = Day of year (same as Day), "d" = Day, "w" = Weekday (same as Day), "ww" = Week, "h" = Hour, "n" = Minute, "s" = Second)
+:DATESERIAL DateSerial(yearnumber, monthnumber, daynumber) 'Returns a Variant of subtype Date for a specified year, month, and day.
+:DATEVALUE DateValue(date) 'Returns a Variant of subtype Date.
+:DATEFORMATCONSTANTS = vbGeneralDate /* 0 - Display a date and/or time */ | vbLongDate /* 1 - use local long date format */ | vbShortDate /* 2 - use local short date format */ | vbLongTime /* 3 - use local long time format */ | vbShortTime /* 4 - use local short time format */
+:DATEANDTIME CONSTANTS = vbSunday /* 1 */ | vbMonday /* 2 */ | vbTuesday /* 3 */ | vbWednesday /* 4 */ | vbThursday /* 5 */ | vbFriday /* 6 */ | vbSaturday /* 7 */ | vbUseSystemDayOfWeek /* 0 - Use system settings for the first day of the week */ | vbFirstJan1 /* 1 - Use the week in which January 1 occurs (default) */ | vbFirstFourDays /* 2 - Use first week that has at least four days in new year */ | vbFirstFullWeek /* 3 - Use first full week of year */
+:DAY Day(date) 'Returns a whole number between 1 and 31, inclusive, representing the day of the month.
+:DIM Dim varname[([subscripts])][, varname[([subscripts])]] . . . /* Declares variables and allocates storage space. */
+:DIVISIONOPERATOR (/) 'Divides two numbers and returns a floating-point result.
+:DOLOOP Do [{While | Until} condition] 'Repeats a block of statements while a condition is True or until a condition becomes True.
+    [statements]
+    [Exit Do]
+    [statements]
+  Loop
+  'Alternate form:
+  Do [statements]
+    [Exit Do]
+    [statements]
+  Loop [{While | Until} condition]
+:ECBLOCKINDENT ecBlockIndent '(Editor Command) Indent selection.
+:ECBLOCKUNINDENT ecBlockUnindent '(Editor Command) Unindent selection.
+:ECCLEARALL ecClearAll '(Editor Command) Delete everything.
+:ECCOLUMNSELECT ecColumnSelect '(Editor Command) Column selection mode.
+:ECCOPY ecCopy '(Editor Command) Copy selection to clipboard.
+:ECCUT ecCut '(Editor Command) Cut selection to clipboard.
+:ECDELETEBOL ecDeleteBOL '(Editor Command) Delete from cursor to beginning of line.
+:ECDELETECHAR ecDeleteChar '(Editor Command) Delete char at cursor (i.e. delete key).
+:ECDELETEEOL ecDeleteEOL '(Editor Command) Delete from cursor to end of line.
+:ECDELETELASTCHAR ecDeleteLastChar '(Editor Command) Delete last char (i.e. backspace key).
+:ECDELETELASTWORD ecDeleteLastWord '(Editor Command) Delete from cursor to start of word.
+:ECDELETELINE ecDeleteLine '(Editor Command) Delete current line.
+:ECDELETEWORD ecDeleteWord '(Editor Command) Delete from cursor to end of word.
+:ECDOWN ecDown '(Editor Command) Move cursor down one line.
+:ECEDITORBOTTOM ecEditorBottom '(Editor Command) Move cursor to absolute end.
+:ECEDITORTOP ecEditorTop '(Editor Command) Move cursor to absolute beginning.
+:ECGOTOMARKER ecGotoMarkern '(Editor Command) Goto bookmark n (where "n" = 0 - 9).
+:ECHO echo(string) 'Information box with text and button OK.
+:ECIMESTR ecImeStr '(Editor Command) Insert character(s) from IME.
+:ECINSERTLINE ecInsertLine '(Editor Command) Break line at current position, leave caret.
+:ECINSERTMODE ecInsertMode '(Editor Command) Set insert mode.
+:ECLEFT ecLeft '(Editor Command) Move cursor left one char.
+:ECLINEBREAK ecLineBreak '(Editor Command) Break line at current position, move caret to new line.
+:ECLINEEND ecLineEnd '(Editor Command) Move cursor to end of line.
+:ECLINESELECT ecLineSelect '(Editor Command) Line selection mode.
+:ECLINESTART ecLineStart '(Editor Command) Move cursor to beginning of line.
+:ECLOWERCASE ecLowerCase '(Editor Command) Convert to lowercase. Apply to the current or previous word.
+:ECLOWERCASEBLOCK ecLowerCaseBlock '(Editor Command) Convert to lowercase. Apply to current selection, or current char if no selection is made.
+:ECMATCHBRACKET ecMatchBracket '(Editor Command) Go to matching bracket.
+:ECNEXTLINESTART ecNextLineStart '(Editor Command) Move cursor to next line begining.
+:ECNORMALSELECT ecNormalSelect '(Editor Command) Normal selection mode.
+:ECOVERWRITEMODE ecOverwriteMode '(Editor Command) Set overwrite mode.
+:ECPAGEBOTTOM ecPageBottom '(Editor Command) Move cursor to bottom of page.
+:ECPAGEDOWN ecPageDown '(Editor Command) Move cursor down one page.
+:ECPAGELEFT ecPageLeft '(Editor Command) Move cursor right one page.
+:ECPAGERIGHT ecPageRight '(Editor Command) Move cursor left one page.
+:ECPAGETOP ecPageTop '(Editor Command) Move cursor to top of page.
+:ECPAGEUP ecPageUp '(Editor Command) Move cursor up one page.
+:ECPASTE ecPaste '(Editor Command) Paste clipboard to current position.
+:ECREDO ecRedo '(Editor Command) Perform redo if available.
+:ECRIGHT ecRight '(Editor Command) Move cursor right one char.
+:ECSCROLLDOWN ecScrollDown '(Editor Command) Scroll down one line leaving cursor position unchanged.
+:ECSCROLLLEFT ecScrollLeft '(Editor Command) Scroll left one char leaving cursor position unchanged.
+:ECSCROLLRIGHT ecScrollRight '(Editor Command) Scroll right one char leaving cursor position unchanged.
+:ECSCROLLUP ecScrollUp '(Editor Command) Scroll up one line leaving cursor position unchanged.
+:ECSELDOWN ecSelDown '(Editor Command) ecDown + ecSelection
+:ECSELECTALL ecSelectAll '(Editor Command) Select entire content of editor, beginning to end.
+:ECSELEDITORBOTTOM ecSelEditorBottom '(Editor Command) ecEditorBottom + ecSelection
+:ECSELEDITORTOP ecSelEditorTop '(Editor Command) ecEditorTop + ecSelection
+:ECSELLEFT ecSelLeft '(Editor Command) ecLeft + ecSelection
+:ECSELLINEEND ecSelLineEnd '(Editor Command) ecLineEnd + ecSelection
+:ECSELLINESTART ecSelLineStart '(Editor Command) ecLineStart + ecSelection
+:ECSELPAGEBOTTOM ecSelPageBottom '(Editor Command) ecPageBottom + ecSelection
+:ECSELPAGEDOWN ecSelPageDown '(Editor Command) ecPageDown + ecSelection
+:ECSELPAGELEFT ecSelPageLeft '(Editor Command) ecPageLeft + ecSelection
+:ECSELPAGERIGHT ecSelPageRight '(Editor Command) ecPageRight + ecSelection
+:ECSELPAGETOP ecSelPageTop '(Editor Command) ecPageTop + ecSelection
+:ECSELPAGEUP ecSelPageUp '(Editor Command) ecPageUp + ecSelection
+:ECSELRIGHT ecSelRight '(Editor Command) ecRight + ecSelection
+:ECSELUP ecSelUp '(Editor Command) ecUp + ecSelection
+:ECSELWORDLEFT ecSelWordLeft '(Editor Command) ecWordLeft + ecSelection
+:ECSELWORDRIGHT ecSelWordRight '(Editor Command) ecWordRight + ecSelection
+:ECSETMARKER ecSetMarkern '(Editor Command) Set bookmark n (where "n" = 0 - 9).
+:ECSHIFTTAB ecShiftTab '(Editor Command) Shift+Tab key.
+:ECTAB ecTab '(Editor Command) Tab key.
+:ECTITLECASE ecTitleCase '(Editor Command) Convert to title case. Apply to the current or previous word.
+:ECTOGGLECASE ecToggleCase '(Editor Command) Toggle case. Apply to the current or previous word.
+:ECTOGGLECASEBLOCK ecToggleCaseBlock '(Editor Command) Toggle case. Apply to current selection, or current char if no selection is made.
+:ECTOGGLEMODE ecToggleMode '(Editor Command) Toggle ins/ovr mode.
+:ECUNDO ecUndo '(Editor Command) Perform undo if available.
+:ECUP ecUp '(Editor Command) Move cursor up one line.
+:ECUPPERCASE ecUpperCase '(Editor Command) Convert to uppercase. Apply to the current or previous word.
+:ECUPPERCASEBLOCK ecUpperCaseBlock '(Editor Command) Convert to uppercase. Apply to current selection, or current char if no selection is made.
+:ECWORDLEFT ecWordLeft '(Editor Command) Move cursor left one word.
+:ECWORDRIGHT ecWordRight '(Editor Command) Move cursor right one word.
+:EDITORCOMMANDS = ecBlockIndent | ecBlockUnindent | ecClearAll | ecColumnSelect | ecCopy | ecCut | ecDeleteBOL | ecDeleteChar | ecDeleteEOL | ecDeleteLastChar | ecDeleteLastWord | ecDeleteLine | ecDeleteWord | ecDown | ecEditorBottom | ecEditorTop | ecGotoMarkern | ecImeStr | ecInsertLine | ecInsertMode | ecLeft | ecLineBreak | ecLineEnd | ecLineSelect | ecLineStart | ecLowerCase | ecLowerCaseBlock | ecMatchBracket | ecNextLineStart | ecNormalSelect | ecOverwriteMode | ecPageBottom | ecPageDown | ecPageLeft | ecPageRight | ecPageTop | ecPageUp | ecPaste | ecRedo | ecRight | ecScrollDown | ecScrollLeft | ecScrollRight | ecScrollUp | ecSelDown | ecSelectAll | ecSelEditorBottom | ecSelEditorTop | ecSelLeft | ecSelLineEnd | ecSelLineStart | ecSelPageBottom | ecSelPageDown | ecSelPageLeft | ecSelPageRight | ecSelPageTop | ecSelPageUp | ecSelRight | ecSelUp | ecSelWordLeft | ecSelWordRight | ecSetMarkern | ecShiftTab | ecTab | ecTitleCase | ecToggleCase | ecToggleCaseBlock | ecToggleMode | ecUndo | ecUp | ecUpperCase | ecUpperCaseBlock | ecWordLeft | ecWordRight
+:EDITORSCOUNT editorsCount() 'Number of currently open editor sessions.'
+:ERASE Erase arrayname 'Reinitializes the elements of fixed-size arrays and deallocates dynamic-array storage space.
+:ERROBJECT 'Contains information about run-time errors. Accepts the Raise and Clear methods for generating and clearing run-time errors.
+:ESCAPE Escape(charString) 'Encodes a string so it contains only ASCII characters.
+:EVAL Eval(expression) 'Evaluates an expression and returns the result.
+:EVENTS = Initialize-Event | Terminate-Event
+:EXECUTE Execute statementstringexpression 'Executes one or more specified statements (separated by colons or embedded line breaks.) x=expr is always an assignment in Execute.
+:EXECUTEGLOBAL ExecuteGlobal statementstringexpression 'Executes one or more specified statements (separated by colons or embedded line breaks) in the global namespace of a script. x=expr is always an assignment.
+:EXIT Exit {Do | For | Function | Property | Sub} 'Exits a block of DoLoop, ForNext, Function, or Sub code.
+:EXP Exp(number) 'Returns e (the base of natural logarithms) raised to a power.
+:EXPONENTIATIONOPERATOR (^) 'Raises a number to the power of an exponent.
+:FILENAME .fileName(string) '(Editor Object Function) Sets/returns editor file name. Returns string
+:FILTER Filter(InputStrings, Searchstring[, Include[, Comparison]]) 'InputStrings is a one-dimensional array of strings to be searched. Include=True means return the subset of the array that contains Value as a substring. False means return the subset that does not contain Value as a substring. bBinaryCompare (0) means perform a binary comparison, vbTextCompare (1) means perform a textual comparison. Returns a zero-based array containing a subset of a string array based on a specified filter criteria.
+:FIRSTDAYOFWEEK vbUseSystemDayOfWeek (0) | vbSunday (1) | Sunday (default) | vbMonday (2) | vbTuesday (3) | vbWednesday (4) | vbThursday (5) | vbFriday (6) | vbSaturday (7)
+:FIRSTWEEKOFYEAR vbUseSystem (0) | vbFirstJan1 (1) | vbFirstFourDays (2) | vbFirstFullWeek(3)
+:FIX Fix(number) 'Returns the integer portion of a number, except that Fix converts -8.4 to -8.
+:FORNEXT  For counter = initial_value To final_value [Step increment]'Repeats a group of statements a specified number of times.
+    [statements]
+    [Exit For]
+    [statements]
+  Next
+:FOREACHNEXT For Each element In group 'Repeats a group of statements for each element in an array or collection. For collections, element can only be a Variant variable, a generic Object variable, or any specific Automation object variable. For arrays, element can only be a Variant variable.
+    [statements]
+    [Exit For]
+    [statements]
+  Next [element]
+:FORMATCURRENCY FormatCurrency(Expression[,NumDigitsAfterDecimal [,IncludeLeadingDigit [,UseParensForNegativeNumbers [,GroupDigits]]]]) 'Returns an expression formatted as a currency value using the currency symbol defined in the system control panel.
+    'IncludeLeadingDigit, UseParensForNegativeNumbers, and GroupDigits are: vbUseDefault (-2), vbTrue (-1), or vbFalse (0)
+:FORMATDATETIME FormatDateTime(Date[, FormatCode]) 'Returns an expression formatted as a date or time.
+ 'FormatCode is one of: vbGeneralDate (0) means date part (if present) is to be displayed as a short date, and the time part (if present) is to be displayed as a long time, or
+ 'vbLongDate (1) | vbShortDate (2) | vbLongTime (3) | vbShortTime (4) (24-hour format).
+:FORMATNUMBER FormatNumber(Expression [,NumDigitsAfterDecimal [,IncludeLeadingDigit [,UseParensForNegativeNumbers [,GroupDigits]]]]) 'Returns an expression formatted as a number.
+    'IncludeLeadingDigit, UseParensForNegativeNumbers, and GroupDigits are: vbUseDefault (-2), vbTrue (-1), or vbFalse (0)
+:FORMATPERCENT FormatPercent(Expression[,NumDigitsAfterDecimal [,IncludeLeadingDigit [,UseParensForNegativeNumbers [,GroupDigits]]]]) 'Returns an expression formatted as a percentage (multiplied by 100) with a trailing % character.
+    'IncludeLeadingDigit, UseParensForNegativeNumbers, and GroupDigits are: vbUseDefault (-2), vbTrue (-1), or vbFalse (0)
+:FTPCOMMAND ftpCommand(command_string) 'Send command to FTP server, e.g.. "CWD \public\www".
+:FTPCONNECT ftpConnect(connection_string) 'Connect to predefined FTP connection. Returns Boolean
+:FTPDISCONNECT ftpDisconnect() 'Disconnect FTP server.
+:FTPDOWNLOADFILE ftpDownloadFile(ftp_name_string, local_name_string) 'Download file using FTP. Returns boolean
+:FTPUPLOADFILE ftpUploadFile(local_name_string, ftp_name_string) 'Upload file using FTP. Returns boolean
+:FUNCTIONS = Abs | Array | Asc | Atn | CBool | CByte | CCur | CDate | CDbl | Chr | CInt | CLng | Conversions | Cos | CreateObject | CSng | CStr | Date | DateAdd | DateDiff | DatePart | DateSerial | DateValue | Day | Escape | Eval | Exp | Filter | Fix | FormatCurrency | FormatDateTime | FormatNumber | FormatPercent | GetLocale | GetObject | GetRef | Hex | Hour | InputBox | InStr | InStrRev | Int | IsArray | IsDate | IsEmpty | IsNull | IsNumeric | IsObject | Join | LBound | LCase | Left | Len | LoadPicture | Log | LTrim | Maths | Mid | Minute | Month | MonthName | MsgBox | Now | Oct | Replace | RGB | Right | Rnd | Round | RTrim | ScriptEngine | ScriptEngineBuildVersion | ScriptEngineMajorVersion | ScriptEngineMinorVersion | Second | SetLocale | Sgn | Sin | Space | Split | Sqr | StrComp | String | StrReverse | Tan | Time | Timer | TimeSerial | TimeValue | Trim | TypeName | UBound | UCase | Unescape | VarType | Weekday | WeekdayName | Year
+:FUNCTION [Public [Default] | Private] Function name [(arglist)] 'Declares the name, arguments, and code that form the body of a Function procedure.
+    [statements]
+    [name = expression]
+    [Exit Function]
+    [statements]
+    [name = expression]
+  End Function
+:GETCLIPBOARDTEXT getClipboardText() 'Returns text from clipboad.
+:GETLOCALE GetLocale() 'Returns the current locale ID value, as shown in the Locale ID chart. (U.S.English is 1033.)
+:GETOBJECT GetObject([pathname] [, class]) 'Returns a reference to an Automation object from a file.
+:GETREF Set objectname.eventname = GetRef(procname) 'Allows you to connect a VBScript procedure (Function or Sub) to any available event on your DHTML (Dynamic HTML) pages. Returns a reference to a procedure that can be bound to an event.
+:GETVARVALUE getVarValue(variablenamestring)[, filenamestring] 'Returns specified PSPad variable (e.g. "%UserName%"). Second parameter is optional, is used fo filename related variables.
+:HEX Hex(number) 'Returns the hexadecimal value of a number, as a string. Note: Hex(Null) = Null, Hex(Empty) = 0).
+:HOUR Hour(time) 'Returns the hour of the day (as a whole number from 0 to 23). Note: Hour(Null) = Null
+:IFTHENELSE If condition Then statements [Else elsestatements ] '(Single-Line syntax)
+  'Conditionally executes a group of statements, depending on the value of the condition expression.
+  '(Multi-line syntax)
+  If condition Then
+    [statements]
+    [ElseIf condition-n Then
+    [elseifstatements]] . . .
+  [Else
+    [elsestatements]]
+  End If
+:INITIALIZEEVENT Private Sub Class_Initialize()
+    statements
+  End Sub
+:INPUTBOX InputBox(promptstring[, titlestring][, defaultstring][, xpos[, ypos]][, helpfile, contextnumber]) 'Displays a prompt in a dialog box, waits for the user to input text or click a button and then returns the contents of the text box.
+:INPUTTEXT inputText(promptstring, defaultstring[, cancelstring]) 'Displays a prompt in a dialog box, waits for the user to input text or click a button, and returns the contents of the text box. If user clicks "Cancel" an empty string is returned, or value of optional cancel parameter.
+ INSTR InStr([startpos,] string, searchstring [, Comparison]) 'Returns the position of the first occurrence of one string within another.
+:INSTRREV InStrRev(string, searchstring[, startpos[, Comparison]]) 'Returns the position of an occurrence of one string within another, from the end of string. (-1 means end of string)
+:INT Int(number) 'Returns the integer portion of a number, except that Int converts -8.4 to -9.
+:INTEGERDIVISIONOPERATOR \ 'Divides two numbers and returns an integer result.
+:ISARRAY IsArray(varname) 'Returns a Boolean value indicating whether the argument is an array.
+:ISDATE IsDate(expression) 'Returns a Boolean value indicating whether the expression can be converted to a date.
+:ISEMPTY IsEmpty(expression) 'Returns a Boolean value indicating whether a variable has been initialized.
+:ISNULL IsNull(expression) 'Returns a Boolean value indicating whether an expression contains no valid data (Null).
+:ISNUMERIC IsNumeric(expression) 'Returns a Boolean value indicating whether an expression can be evaluated as a number.
+:ISOBJECT IsObject(expression) 'Returns a Boolean value indicating whether an expression references a valid Automation object.
+:JOIN Join(substringsarray[, delimiter]) 'Returns a string created by joining a number of substrings contained in an array.
+:KEYWORDS = Empty 'uninitialized (not the same as Null) (use IsEmpty) | False 'value 0 | Nothing 'disassociated from any actual object (Use Set to assign Nothing to an object variable; use Is to test; use IsNull to determine if a variable is assigned Null) | True 'value -1
+:LBOUND LBound(arrayname[, dimension]) 'Returns the smallest available subscript for the indicated dimension of an array (default 1). The lower bound for any dimension is always 0.
+:LCASE LCase(string) 'Returns the argument value converted to lowercase. LCase(Null) = Null.)
+:LEFT Left(string, numchars) 'Returns the specified number of characters from the left side of the given string.
+:LEN Len(string | varname) 'Returns the number of characters in a string or the number of bytes required to store a variable. Len(Null) = Null)
+:LINESCOUNT .linesCount() '(Editor Object Function) Returns editor lines count.
+:LINETEXT .lineText(string) '(Editor Object Function) Replaces or returns the content of the active line.
+:LOADPICTURE LoadPicture(picturenamestring) 'Returns a picture object. Available only on 32-bit platforms.
+:LOG Log(number) 'Returns the natural logarithm of a number.
+:LOGADDLINE logAddLine(string) 'Adds new line into LOG.
+:LOGCLEAR logClear() 'Clears whole LOG window content.
+:LOGGETLINE logGetLine(index_integer) 'Returns indicated line from LOG, identified by index parameter (numbered from 0).
+:LOGICALOPERATORS = And | Not | Or | Xor
+:LOGLINESCOUNT logLinesCount() 'Returns the count of lines in the log
+:LOGSETLINE logSetLine(index_integer, string) 'Sets log line identified by index.
+:LTRIM LTrim(string) 'Returns a copy of the argument string with leading spaces removed.
+:MATCHESCOLLECTION 'contains individual Match objects, and can be only created using the Execute method of the RegExp object. The Count property of the Matches collection is read-only, as are the individual Match object properties.
+:MATCHOBJECT 'can be only created using the Execute method of the RegExp object, which actually returns a collection of Match objects. All Match object properties are read-only.
+:METHODS = Clear | Execute | Raise | Replace | Test | Write | WriteLine
+:MID Mid(string, startpos[, length]) 'Returns the specified number of characters from a string.
+:MINUTE Minute(time) 'Returns a whole number between 0 and 59, inclusive, representing the minute of the hour.
+:MISCELLANEOUSCONSTANTS = vbObjectError '-2147221504
+:MODOPERATOR Mod 'Divides two integers and returns the integer remainder.
+:MODULEEXISTS moduleExists(namestring) 'Returns True/1 if script module exists, otherwise False/0.
+:MODULEFILENAME moduleFileName(filenamestring) 'Returns file name string of module, or empty string.
+:MODULEPATH modulePath() 'returns module file path string including last backslash.
+:MODULEVERSION moduleVersion(namestring) 'Returns version of module, empty string if it doesn't exist.
+:MONTH Month(date) 'Returns a whole number between 1 and 12, inclusive, representing the month of the year.
+:MONTHNAME MonthName(month[, abbreviatebool]) 'Returns a string indicating the specified month. Default = False (don't abbreviate).
+:MSGBOX MsgBox(promptstring[, formatcode][, titlestring][, helpfile, context]) 'Displays a message in a dialog box, waits for the user to click a button and returns a value indicating which button was clicked.
+    'Max length 1024 chars. Formatcode = sum of MsgBoxButtons + MsgBoxIcon + MsgBoxDefault + MsgBoxModal
+:MSGBOXBUTTONS = vbOKOnly | vbOKCancel | vbAbortRetryIgnore | vbYesNoCancel | vbYesNo | vbRetryCancel  ' (Values = 0 | 1 | 2 | 3 | 4 | 5, but all are predefined constants)
+:MSGBOXICON = vbCritical | vbQuestion | vbExclamation | vbInformation  ' (Values = 16 | 32 | 48 | 64, but all are predefined constants)
+:MSGBOXDEFAULT = vbDefaultButton1 | vbDefaultButton2 | vbDefaultButton3 | vbDefaultButton4  ' (Values = 0 | 256 | 512 | 768, but all are predefined constants)
+:MSGBOXMODAL = vbApplicationModal | vbSystemModal  ' (Values = 0 | 4096, but all are predefined constants)
+:MULTIPLICATIONOPERATOR (*) 'Multiplies two numbers.
+:NEWEDITOR newEditor() 'Returns object 'Creates new object for editor handling.
+:NEWFILE .newFile([file_name_string]) '(Editor Object Function) Creates new file in PSPad. File name is optional.
+:NOW Now 'Returns the current date and time according to the setting of your computer's system date and time.
+:OBJECTSANDCOLLECTIONS = Class | Debug | Err | Match | Matches | Regular Expression (RegExp) | SubMatches
+:OCT Oct(number) 'Returns a string representing the octal value of a number.
+:ONERROR On Error Resume Next | On Error GoTo 0 'Enables or disables error-handling.
+:OPENFILE .openFile(file_name_string) '(Editor Object Function) Opens existing file in new editor window. Returns boolean.
+:OPENFILEFROMFTP .openFileFromFTP(namestring) '(Editor Object Function) Opens file using FTP. Returns boolean.
+:OPERATORS = Arithmetic | Assignment | Comparison | Concatenation | Logical
+:OPTIONEXPLICIT Option Explicit 'Forces explicit declaration of all variables in a script. Must appear in a script before any other statements.
+:PRINTFILE .printFile(Show dialog box: boolean) '(Editor Object Function) Print editor. Note: For text files only. Will not print Hex files.
+:PRIVATE Private varname[([subscripts])][, varname[([subscripts])]] 'Declares private variables and allocates storage space. Declares, in a Class block, a private variable. Returns boolean.
+:PROJECTFILENAME projectFileName() 'Project filename including path. Returns string
+:PROJECTFILES projectFiles(index_integer) 'Returns indexed filename string including path.
+:PROJECTFILESCOUNT projectFilesCount() 'Returns integer number of files in current project.
+:PROJECTSAVE projectSave() 'Save current project. Always returns a value of 1.
+:PROPERTIES = Description | FirstIndex | Global | HelpContext | HelpFile | IgnoreCase | Length | Number | Pattern | Source | Value
+    [statements]
+    [[Set] name = expression]
+    [Exit Property]
+    [statements]
+    [[Set] name = expression]
+  End Property
+:PROPERTYLET [Public | Private] Property Let name ([arglist,] value) 'Declares, in a Class block, the name, arguments, and code that form the body of a Property procedure that assigns (sets) the value of a property.
+    [statements]
+    [Exit Property]
+    [statements]
+  End Property
+:PROPERTYSET [Public | Private] Property Set name([arglist,] reference) 'Declares, in a Class block, the name, arguments, and code that form the body of a Property procedure that sets a reference to an object.
+    [statements]
+    [Exit Property]
+    [statements]
+  End Property
+:PSPADACTIONS = aadddiacritic | aaddfile | aaddfilestofolder | aaddfolder | aalltoascii | aautocompl | aautorefresh | ablockalign | ablockcenter | ablockleft | ablockright | acapitalize | aclose | acloseall | acodeexplorer | acodeformat | acolorselect | acomment | acompile | acopy | acopyline | acsstoinline | acsstostructure | acsvimport | acut | adatetime | adatetimedialog | adectohex | adelete | adelfolder | adelmark | adelmarks | adiffsame | aexit | aexpcliphtml | aexpcliprtf | aexpcliptex | aexpclipxhtml | aexport | afilessearch | afind | afindnext | afindprev | afindprevword | afindword | afont | afullscreen | agooglesearch | agotoline | aguid | ahextodec | ahtmlcompress | ahtmlcheck | ahtmlprev | ahtmlreformat | ahtmlseltag | aindent | ainfo | ainserfile | ainserttext | ainvertcase | ajoinline | alanghelp | alastuserconvertor | alinenum | alogwindow | aloremipsum | alowercase | amacromgr | amacroplay | amacrorecord | amailcontents | amailfile | amarkdown | amarklist | amarkup | amatchbracket | amd5gen | amoveas | anew | aopen | aopencopy | aopenhex | aopensame | aopenselected | aopenwwwfile | apagesetup | apaste | apastehtml | apastenomove | aprint | aprintprev | aprintsetup | aprojaddopen | aprojfolderclose | aprojfolderopen | aprojfromdir | aprojinfo | aprojmainfile | aprojnew | aprojopen | aprojsave | aprojsaveas | aprojsettings | aprojshow | areadonly | aredo | areformat | areformat2 | aremoveblanklines | aremovefile | aremoveredundantblank | aremovespaces | aremovetags | areopen | arepeatlastaction | areplace | arollbar | artfimport | asave | asaveall | asaveas | asaveblock | asavesametime | asavetoftp | aselectall | aselectnext | aselectprew | aselmatchbracket | aselstring | asendtodisk | asentensize | asetmain | asetmark | ashellopen | ashowcontrolbar | ashowspecchar | asort | aspell | aspellcheck | aspellsett | astayontop | aswaplineabove | aswaplinebellow | aswitchlog | asyntax | asyntaxchange | asysedit | atabtospaces | atagtolowercase | atagtouppercase | atexttohtml | atojscript | atophp | aundo | aunindent | aunquote | auppercase | auserconvertors | awindcascade | awindsplithoriz | awindsplitvert | awindtile | awindtilehoriz | awindtilevert | awordwrap
+:PUBLIC Public varname[([subscripts])][, varname[([subscripts])]] . . 'Declares public variables and allocates storage space. Declares, in a Class block, a public variable.
+:RANDOMIZE Randomize [number] 'Initializes the random-number generator.
+:READONLY .readOnly(status_boolean) '(Editor Object Function) Set or return current editor read-only (R/O) status. Returns boolean.
+:REDIM ReDim [Preserve] varname(subscripts) [, varname(subscripts)] 'Declares dynamic-array variables, and allocates or reallocates storage space at procedure level.
+:REGULAREXPRESSION(REGEXP)OBJECT 'Provides simple regular expression support.
+:RELOADFILE .reloadFile() '(Editor Object Function) Reload file. Returns boolean.
+:REM Rem comment | ' comment 'Includes explanatory remarks in a program. If the Rem keyword follows other statements on a line, it must be separated from the statements by a colon. However, when you use an apostrophe, the colon is not required after other statements.
+:REPLACE Replace(stringexpression, searchstring, replacewith[, start[, count[, Comparison]]]) 'Returns a string in which a specified substring has been replaced with another substring a specified number of times.
+:RGB RGB(redcomponent, greencomponent, bluecomponent) 'Returns a whole number representing an RGB color value. Each component is 0 - 255.
+:RIGHT Right(string, length) 'Returns the specified number of characters from the right side of the string.
+:RND Rnd[(number)] 'Returns a random number < 1 but greater than or equal to 0.
+:ROUND Round(expression[, numdecimalplaces]) 'Returns a number rounded to a specified number of decimal places.
+:RTRIM RTrim(string) 'Returns a copy of a string without trailing spaces .
+:RUNPSPADACTION runPSPadAction(actionstring) 'Runs any PSPad action.
+:SAVEFILE .saveFile() '(Editor Object Function) Saves file. Returns boolean.
+:SAVEFILEAS .saveFileAs(file_name_string) '(Editor Object Function) Saves file as specified namestring. Returns boolean.
+:SAVEFILETOFTP .saveFileToFTP() '(Editor Object Function) Saves file to current FTP directory. Returns boolean.
+:SCRIPTENGINE ScriptEngine 'Returns a string representing the scripting language in use (either "VBScript", "JScript", or "VBA" - Microsoft Visual Basic for Applications).
+:SCRIPTENGINEBUILDVERSION ScriptEngineBuildVersion 'Returns the build version number of the scripting engine in use.
+:SCRIPTENGINEMAJORVERSION ScriptEngineMajorVersion 'Returns the major version number of the scripting engine in use.
+:SCRIPTENGINEMINORVERSION ScriptEngineMinorVersion 'Returns the minor version number of the scripting engine in use.
+:SECOND Second(time) 'Returns a whole number between 0 and 59, inclusive, representing the second of the minute.
+:SELECTCASE Select Case testexpression 'Executes one of several groups of statements, depending on the value of an expression.
+    [Case expressionlist-n
+    [statements-n]] . . .
+  [Case Else
+    [elsestatements-n]]
+  End Select
+:SELECTIONMODE selectionMode(string) 'Sets selection mode - C:column, L:line, N:normal.
+:SELLENGTH .selLength(integer) '(Editor Object Function) Returns or sets selection length. Returns integer.
+:SELSTART .selStart(integer) '(Editor Object Function) Returns or sets selection start. Returns integer.
+:SELTEXT .selText(string) '(Editor Object Function) Replaces/returns selected text from editor. Returns string.
+:SET Set objectvar = {objectexpression | New classname | Nothing} 'Assigns an object reference to a variable or property, or associates a procedure reference with an event.
+  Set object.eventname = GetRef(procname) 'Alternate-form
+:SETBLOCKBEGIN .setBlockBegin(x_integer, y_integer) '(Editor Object Function) Sets beginning of block selection. Returns boolean.
+:SETBLOCKEND .setBlockEnd(x_integer, y_integer) '(Editor Object Function) Sets End of block selection. Returns boolean.
+:SETCARETPOS .setCaretPos(x_integer, y_integer) '(Editor Object Function) Sets editor caret (cursor) position. -1 in parameter means no change in coordinate. Returns boolean.
+:SETCLIPBOARDTEXT setClipboardText(textstring) 'Stores text into clipboard.
+:SETLOCALE SetLocale(lcid) 'Sets the global locale and returns the previous locale. (0 = match current system setting).
+:SGN Sgn(number) 'Returns an integer indicating the sign of a number (+1, -1, or 0).
+:SIN Sin(number) 'Returns the sine of an angle (expressed in radians).
+:SLEEP sleep(ms_integer) 'Stops script execution for specified number of miliseconds.
+:SPACE Space(number) 'Returns a string consisting of the specified number of spaces.
+:SPLIT Split(expression[, delimiter[, count[, compare]]]) 'Returns a zero-based, one-dimensional array containing a specified number of substrings.
+:SQR Sqr(number) 'Returns the square root of a number.
+:STATEMENTS = call | class | const | dim | doloop | erase | execute | executeglobal | exit | foreachnext | fornext | function | ifthenelse | on error | option explicit | private | property get | property let | property set | public | randomize | redim | rem | select case | set | stop | sub | whilewend | with
+:STRCOMP StrComp(string1, string2[, Comparison]) 'Returns a value indicating the result of a string comparison (-1 for less, 0 for equal, +1 for greater, or Null for Null).
+:STRING String(number, charactercode) 'Returns a repeating character string of the length specified.
+:STOP Stop 'Suspends execution, but does not close any files or clear any variables. Has no effect unless the script is being debugged.
+:STRINGCONSTANTS = 'Built-in vbCr 'Chr(13) - Carriage return | VbCrLf 'Chr(13) & Chr(10) - Carriage return–linefeed combination | vbFormFeed 'Chr(12) - Form feed; not useful in Microsoft Windows | vbLf 'Chr(10) - Line feed | vbNewLine 'Chr(13) & Chr(10) or Chr(10) - Platform-specific newline character; whatever is appropriate for the platform | vbNullChar 'Chr(0) - Character having the value 0 | vbNullString 'String having value 0. Not the same as a zero-length string (""); used for calling external procedures vbTab 'Chr(9) - Horizontal tab | vbVerticalTab 'Chr(11) - Vertical tab; not useful in Microsoft Windows
+:STRREVERSE StrReverse(string) 'Returns a string in which the character order of a specified string is reversed.
+:SUB [Public [Default] | Private] Sub name [(arglist)]
+    [statements]
+    [Exit Sub]
+    [statements]
+  End Sub
+:SUBMATCHESCOLLECTION 'contains individual submatch strings, and can only be created using the Execute method of the RegExp object. The SubMatches collection's properties are read-only.
+:SUBSCRIPTS upperbound [,upperbound] . . . 'Dimensions of an array variable; up to 60 multiple dimensions may be declared. The lower bound of an array is always zero.
+:SUBTRACTIONOPERATOR - 'Finds the difference between two numbers or indicates the negative value of a numeric expression. *.
+:TAN Tan(number) 'Returns the tangent of an angle (expressed in radians).
+:TERMINATEEVENT Private Sub Class_Terminate()
+    statements
+  End Sub
+:TEXT .text(string) '(Editor Object Function) Replaces or returns all editor text. Returns string.
+:TIME Time 'Returns a Variant of subtype Date indicating the current system time.
+:TIMER Timer 'Returns the number of seconds that have elapsed since 12:00 AM (midnight).
+:TIMESERIAL TimeSerial(hour, minute, second) 'Returns a Variant of subtype Date containing the time for a specific hour, minute, and second.
+:TIMEVALUE TimeValue(time) 'Returns a Variant of subtype Date containing the time.
+:TRIM Trim(string) 'Returns a copy of a string without both leading and trailing spaces.
+:TRISTATECONSTANTS = 'Built-in vbUseDefault '-2 - use default from computer's regional settings | vbTrue '-1 - True | vbFalse '0 - False
+:TYPENAME TypeName(varname) 'Returns a string that provides Variant subtype information about a variable.
+:UBOUND UBound(arrayname[, dimension]) 'Returns the largest available subscript for the indicated dimension of an array.
+:UCASE UCase(string) 'Returns a string that has been converted to uppercase.
+:UNESCAPE Unescape(charString) 'Decodes a string encoded with the Escape function.
+:VARTYPE VarType(varname) 'Returns a value indicating the subtype of a variable.
+  'Returns one of: vbEmpty (0), vbNull (1), vbInteger (2), vbLong (3), vbSingle (4), vbDouble (5), vbCurrency (6), vbDate (7), vbString (8), vbObject (9), vbError (10), vbBoolean (11), vbVariant (12; Variant (used only with arrays of Variants)), vbDataObject (13), vbByte (17), or vbArray (8192)
+:VARTYPECONSTANTS = 'must declare vbEmpty '0 - Uninitialized (default) | vbNull '1 - Contains no valid data | vbInteger '2 - Integer subtype | vbLong '3 - Long subtype | vbSingle '4 - Single subtype | vbDouble '5 - Double subtype | vbCurrency '6 - Currency subtype | vbDate '7 - Date subtype |vbString '8 - String subtype | vbObject '9 - Object | vbError '10 - Error subtype | vbBoolean '11 - Boolean subtype | vbVariant '12 - Variant (used only for arrays of variants) | vbDataObject '13 - Data access object | vbDecimal '14 - Decimal subtype | vbByte '17 - Byte subtype | vbArray '8192 - Array
+:WEEKDAY Weekday(date, [firstdayofweek]) 'Returns a whole number representing the day of the week.
+:WEEKDAYNAME WeekdayName(weekday, abbreviate[, firstdayofweek]) 'Returns a string indicating the specified day of the week.
+:WHILEWEND While condition 'Executes a series of statements as long as a given condition is True.
+    [statements]
+  Wend
+:WITH With object 'Executes a series of statements on a single object.
+    statements
+  End With
+:YEAR Year(date) 'Returns a whole number representing the year.
