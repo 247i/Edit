@@ -1,0 +1,36 @@
+{
+  "pos" : {
+    "main_max" : false,
+    "main" : "332,171,800,600"
+  },
+  "show_sidepanel" : true,
+  "show_bottom" : false,
+  "float_side" : false,
+  "float_bottom" : false,
+  "size_side" : 200,
+  "size_bottom" : 120,
+  "tab_left" : "Code tree",
+  "tab_bottom" : "",
+  "recent_files" : [
+  ],
+  "list_console" : [
+  ],
+  "finder" : {
+    "regex" : false,
+    "case" : false,
+    "words" : false,
+    "back" : false,
+    "confirm" : false,
+    "wrap" : false,
+    "insel" : false,
+    "tokens" : 0
+  },
+  "lang" : "ta_IN",
+  "session" : "history session.json",
+  "last_cmd" : 0,
+  "groups" : 1,
+  "gr" : {
+    "panel" : "10,28",
+    "pages" : "100,100,10,28,10,28,10,28,10,28,10,28,"
+  }
+}
